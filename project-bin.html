@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>树莓派智能垃圾桶 · Maylin's blog</title>
+  <meta name="description" content="软硬件结合的小项目：用树莓派做识别与自动开盖，反复调参、跑测试把识别率一点点往上推。" />
+  <meta name="author" content="Maylin" />
+  <meta property="og:title" content="树莓派智能垃圾桶 · Maylin's blog" />
+  <meta property="og:description" content="识别、自动开盖、语音提示：一个软硬件结合的小项目。" />
+  <meta property="og:type" content="article" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page">
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Maylin <span class="star">✦</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a class="active" href="projects.html">项目</a></li>
+        <li><a href="posts.html">文章</a></li>
+        <li><a href="about.html">关于我和本站</a></li>
+        <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell">
+      <div class="wrap">
+        <a class="back-link" href="projects.html">← 回到项目</a>
+
+        <div class="detail-head">
+          <p class="eyebrow"><span class="arrow">↳</span> project 02 / hardware</p>
+          <h1 class="display">
+            <span>树莓派</span>
+            <span class="italic">智能垃圾桶</span>
+          </h1>
+          <p class="italic-line">让一个垃圾桶学会看人</p>
+
+          <ul class="meta-row">
+            <li><span>角色</span>待填（如：硬件调试 + 测试）</li>
+            <li><span>时间</span>待填</li>
+            <li><span>工具</span>待填（如：树莓派 · Python · 传感器）</li>
+          </ul>
+        </div>
+
+        <div class="detail-body">
+
+          <section>
+            <h2 class="d-title"><span class="n">01</span> 为什么做这个</h2>
+            <p>垃圾桶开盖这件事，看起来是个小问题，但每次都要用手碰一下，在厨房、医院这类地方就不太舒服。这个项目想验证一件事：用很便宜的硬件，能不能做出「人靠近就自动开」的效果。</p>
+            <p class="todo">待补充：这是课程作业还是自己想做？团队几个人、你负责哪块？</p>
+          </section>
+
+          <section>
+            <h2 class="d-title"><span class="n">02</span> 我做了什么</h2>
+            <ul class="fact-list">
+              <li><span class="mark">✦</span><span>把整件事拆成三步：识别到来的人 → 触发舵机开盖 → 语音提示状态，一步一步单独跑通再串起来。</span></li>
+              <li><span class="mark">✦</span><span>反复调识别距离与灵敏度的参数，用同一套测试动作跑多轮，记录什么时候会误开、什么时候不开。</span></li>
+              <li><span class="mark">✦</span><span>排查硬件「怪问题」：接触不良、供电不足、传感器抖动，学会了先怀疑接线再怀疑代码。</span></li>
+            </ul>
+            <p class="todo">待补充：具体用了什么传感器/模块，参数调了多少轮，误触发从多少次降到多少次。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title"><span class="n">03</span> 结果</h2>
+            <p class="todo">待补充：最终识别率、反应延迟、连续运行多久没出问题。硬件的数字比软件更有说服力，能测就测。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title"><span class="n">04</span> 回头看</h2>
+            <p class="todo">待补充：哪一步最折腾？如果加一个传感器/换一块板子，你会怎么改？</p>
+          </section>
+
+        </div>
+
+        <div class="detail-foot">
+          <a href="project-flower.html">← 上一个：花店后台</a>
+          <a href="project-marketing.html">下一个：海外红人营销 →</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap foot-inner">
+      <span class="f-brand">Maylin ✦</span>
+      <nav class="foot-nav" aria-label="页脚导航">
+        <a href="index.html">首页</a>
+        <a href="projects.html">项目</a>
+        <a href="posts.html">文章</a>
+        <a href="about.html">关于</a>
+      </nav>
+      <span>© 2026 · 慢慢改出来的一个小站</span>
+    </div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

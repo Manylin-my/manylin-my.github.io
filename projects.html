@@ -4,8 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>项目 · Maylin's blog</title>
-  <meta name="description" content="Maylin 做过的项目：花店后台管理系统、树莓派智能垃圾桶、海外红人营销。" />
+  <meta name="description" content="Maylin 做过的项目：花店后台管理系统、树莓派智能垃圾桶、海外红人营销、拾光箱小程序。" />
   <meta name="author" content="Maylin" />
+  <meta property="og:title" content="项目 · Maylin's blog" />
+  <meta property="og:description" content="四件做过的事，每件都写清楚了背景、我做了什么和结果。" />
+  <meta property="og:type" content="website" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -28,41 +31,54 @@
   <main>
     <div class="shell">
       <div class="wrap">
+
         <div class="section-title-row">
-          <h1 class="sec-title"><span class="star">✦</span> 项目</h1>
-          <p class="sec-note">从想法到能跑起来</p>
+          <div>
+            <p class="eyebrow"><span class="arrow">↳</span> work</p>
+            <h1 class="display" style="margin-top:14px;">
+              <span>Things I</span>
+              <span class="italic">made.</span>
+            </h1>
+          </div>
+          <p class="sec-note">四件做过的事 · 点开任意一个看细节</p>
         </div>
         <div class="rule"></div>
 
-        <div class="work-grid cols-2">
-          <article class="work-card">
+        <!-- 主推项目：想换主推，把这块和下面某张卡对调即可 -->
+        <a class="proj-feature" href="project-flower.html">
+          <span class="pf-ghost" aria-hidden="true">01</span>
+          <div class="pf-body">
             <span class="work-num">01 / system</span>
-            <h3>花店后台管理系统</h3>
+            <h2>花店后台管理系统</h2>
             <p>给线下花店做的轻量后台：商品管理、库存监控、缺货提醒、订单处理。用 SQL 建了数据模型，做到下单自动扣库存、补货自动加回去。</p>
             <div class="tags"><span>需求梳理</span><span>数据库</span><span>交互设计</span></div>
-          </article>
+          </div>
+          <span class="pf-go">看详情 <span class="arr">↗</span></span>
+        </a>
 
-          <article class="work-card">
-            <span class="work-num">02 / hardware</span>
+        <div class="proj-grid">
+          <a class="proj-item" href="project-bin.html">
+            <span class="pi-top"><span class="work-num">02 / hardware</span><span class="arr">↗</span></span>
             <h3>树莓派智能垃圾桶</h3>
             <p>软硬件结合的小项目：识别、自动开盖、语音提示。反复调参数、跑测试，一点点把识别率往上推，也学会了怎么排查硬件的怪问题。</p>
             <div class="tags"><span>硬件调试</span><span>参数调优</span><span>测试</span></div>
-          </article>
+          </a>
 
-          <article class="work-card">
-            <span class="work-num">03 / marketing</span>
+          <a class="proj-item" href="project-marketing.html">
+            <span class="pi-top"><span class="work-num">03 / marketing</span><span class="arr">↗</span></span>
             <h3>海外红人营销</h3>
             <p>实习期间做的事：按粉丝量、互动率、账号调性筛选合作达人，跟进内容与上线节点，用对照测试判断到底哪种内容更有效。</p>
             <div class="tags"><span>内容筛选</span><span>A/B 测试</span><span>数据复盘</span></div>
-          </article>
+          </a>
 
-          <article class="work-card">
-            <span class="work-num">04 / miniapp</span>
+          <a class="proj-item" href="project-box.html">
+            <span class="pi-top"><span class="work-num">04 / miniapp</span><span class="arr">↗</span></span>
             <h3>拾光箱 · 小程序</h3>
             <p>一个收藏日常的小程序：把照片和文字按时间线收进「拾光箱」，可以随时回看某一段日子。负责功能规划、页面结构与交互流程设计。</p>
             <div class="tags"><span>微信小程序</span><span>功能规划</span><span>交互设计</span></div>
-          </article>
+          </a>
         </div>
+
       </div>
     </div>
   </main>
