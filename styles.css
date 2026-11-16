@@ -210,8 +210,8 @@ p.lead {
 .tl { position: relative; margin-top: 6px; }
 .tl-item {
   position: relative;
-  display: grid; grid-template-columns: 1fr 132px 1fr;
-  align-items: start; padding: 54px 0;
+  display: grid; grid-template-columns: 1fr 230px 1fr;
+  align-items: center; padding: 46px 0;
 }
 /* 每行自带一段蜿蜒的虚线，上下相接就是一条连续的线 */
 .tl-seg {
@@ -230,14 +230,13 @@ p.lead {
   background: var(--cream); padding: 2px 0;
 }
 
-/* 节点：骑在线上可以点的圆圈 */
+/* 节点：不骑线了，就放在项目标题上方，离线远远的 */
 .tl-node {
-  grid-row: 1; grid-column: 2; justify-self: center; align-self: start;
-  position: relative; z-index: 2; margin-top: 0;
+  position: relative; z-index: 2;
   width: 112px; height: 112px; border-radius: 50%;
   background: var(--card); border: 1px solid var(--line);
   display: grid; place-items: center; cursor: pointer;
-  font-family: inherit; padding: 0;
+  font-family: inherit; padding: 0; margin: 0 0 18px;
   box-shadow: 0 8px 22px rgba(88, 62, 45, 0.07);
   transition: transform 0.3s cubic-bezier(0.3, 0.8, 0.3, 1), box-shadow 0.3s, border-color 0.3s, background 0.3s;
 }
@@ -259,8 +258,8 @@ p.lead {
 }
 .tl-item.open .tl-plus { transform: rotate(135deg); }
 
-/* 文字块：左右交替，永远贴着线 */
-.tl-body { grid-row: 1; max-width: 46ch; padding-top: 10px; }
+/* 文字块：左右交替，圆圈叠在标题上方 */
+.tl-body { grid-row: 1; max-width: 46ch; }
 .tl-item:nth-child(odd) .tl-body { grid-column: 1; justify-self: end; padding-right: 6px; }
 .tl-item:nth-child(even) .tl-body { grid-column: 3; justify-self: start; padding-left: 6px; }
 .tl-num {
@@ -313,7 +312,7 @@ p.lead {
   }
   .tl-item:last-child .tl-end { left: 32px; bottom: 2px; background: var(--cream); }
   .tl-node {
-    position: absolute; left: 0; top: 0; margin: 0;
+    position: absolute; left: 0; top: 30px; margin: 0;
     width: 66px; height: 66px;
   }
   .tl-node svg { width: 48px; height: 48px; }
