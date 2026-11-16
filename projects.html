@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>项目 · Maylin's blog</title>
-  <meta name="description" content="Maylin 做过的项目：花店后台管理系统、树莓派智能垃圾桶、海外红人营销、拾光箱小程序。" />
+  <meta name="description" content="Maylin 做过的项目：花店后台管理系统、树莓派智能垃圾桶、拾光箱小程序。" />
   <meta name="author" content="Maylin" />
   <meta property="og:title" content="项目 · Maylin's blog" />
-  <meta property="og:description" content="四件做过的事，每件都写清楚了背景、我做了什么和结果。" />
+  <meta property="og:description" content="三件做过的事，每件都画了一个小元素。" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -20,6 +20,7 @@
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">首页</a></li>
+        <li><a href="experience.html">工作经历</a></li>
         <li><a class="active" href="projects.html">项目</a></li>
         <li><a href="posts.html">文章</a></li>
         <li><a href="about.html">关于我和本站</a></li>
@@ -40,44 +41,95 @@
               <span class="italic">made.</span>
             </h1>
           </div>
-          <p class="sec-note">四件做过的事 · 点开任意一个看细节</p>
+          <p class="sec-note">三件做过的事 · 每件配了一个小元素</p>
         </div>
         <div class="rule"></div>
 
-        <!-- 主推项目：想换主推，把这块和下面某张卡对调即可 -->
-        <a class="proj-feature" href="project-flower.html">
-          <span class="pf-ghost" aria-hidden="true">01</span>
-          <div class="pf-body">
-            <span class="work-num">01 / system</span>
-            <h2>花店后台管理系统</h2>
-            <p>给线下花店做的轻量后台：商品管理、库存监控、缺货提醒、订单处理。用 SQL 建了数据模型，做到下单自动扣库存、补货自动加回去。</p>
-            <div class="tags"><span>需求梳理</span><span>数据库</span><span>交互设计</span></div>
-          </div>
-          <span class="pf-go">看详情 <span class="arr">↗</span></span>
-        </a>
+        <div class="exp-list">
 
-        <div class="proj-grid">
-          <a class="proj-item" href="project-bin.html">
-            <span class="pi-top"><span class="work-num">02 / hardware</span><span class="arr">↗</span></span>
-            <h3>树莓派智能垃圾桶</h3>
-            <p>软硬件结合的小项目：识别、自动开盖、语音提示。反复调参数、跑测试，一点点把识别率往上推，也学会了怎么排查硬件的怪问题。</p>
-            <div class="tags"><span>硬件调试</span><span>参数调优</span><span>测试</span></div>
+          <!-- 01 花店：一朵花 -->
+          <a class="exp-row" href="project-flower.html" style="text-decoration:none; color:inherit;">
+            <div class="exp-text">
+              <span class="work-num">01 / system</span>
+              <h2>花店后台管理系统</h2>
+              <p>给线下花店做的轻量后台：商品管理、库存监控、缺货提醒、订单处理。用 SQL 建了数据模型，做到下单自动扣库存、补货自动加回去。</p>
+              <div class="tags"><span>需求梳理</span><span>数据库</span><span>交互设计</span></div>
+              <span class="exp-go">看详情 <span class="arr">↗</span></span>
+            </div>
+            <div class="exp-art" aria-hidden="true">
+              <svg viewBox="0 0 200 200" role="img" aria-label="一朵花">
+                <path d="M100 188 C96 156 105 122 100 98" fill="none" stroke="#1e1a17" stroke-width="2" stroke-linecap="round"/>
+                <path d="M100 150 C86 146 78 134 80 122 C94 126 100 136 100 150 Z" fill="#c99a9c"/>
+                <path d="M101 128 C114 124 121 112 119 100 C106 104 100 114 101 128 Z" fill="#c99a9c" opacity="0.7"/>
+                <ellipse cx="100" cy="46" rx="15" ry="24" fill="#c99a9c"/>
+                <ellipse cx="100" cy="46" rx="15" ry="24" fill="#c99a9c" transform="rotate(72 100 70)"/>
+                <ellipse cx="100" cy="46" rx="15" ry="24" fill="#c99a9c" transform="rotate(144 100 70)"/>
+                <ellipse cx="100" cy="46" rx="15" ry="24" fill="#c99a9c" transform="rotate(216 100 70)"/>
+                <ellipse cx="100" cy="46" rx="15" ry="24" fill="#c99a9c" transform="rotate(288 100 70)"/>
+                <circle cx="100" cy="70" r="13" fill="#a2686c"/>
+                <path d="M58 186 L142 186" stroke="#1e1a17" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+              </svg>
+            </div>
           </a>
 
-          <a class="proj-item" href="project-marketing.html">
-            <span class="pi-top"><span class="work-num">03 / marketing</span><span class="arr">↗</span></span>
-            <h3>海外红人营销</h3>
-            <p>实习期间做的事：按粉丝量、互动率、账号调性筛选合作达人，跟进内容与上线节点，用对照测试判断到底哪种内容更有效。</p>
-            <div class="tags"><span>内容筛选</span><span>A/B 测试</span><span>数据复盘</span></div>
+          <!-- 02 智能垃圾桶：垃圾桶机器人 -->
+          <a class="exp-row flip" href="project-bin.html" style="text-decoration:none; color:inherit;">
+            <div class="exp-text">
+              <span class="work-num">02 / hardware</span>
+              <h2>树莓派智能垃圾桶</h2>
+              <p>软硬件结合的小项目：识别、自动开盖、语音提示。反复调参数、跑测试，一点点把识别率往上推，也学会了怎么排查硬件的怪问题。</p>
+              <div class="tags"><span>硬件调试</span><span>参数调优</span><span>测试</span></div>
+              <span class="exp-go">看详情 <span class="arr">↗</span></span>
+            </div>
+            <div class="exp-art" aria-hidden="true">
+              <svg viewBox="0 0 200 200" role="img" aria-label="垃圾桶机器人">
+                <line x1="100" y1="34" x2="100" y2="52" stroke="#1e1a17" stroke-width="2"/>
+                <circle cx="100" cy="30" r="6" fill="#a2686c"/>
+                <g transform="rotate(-6 100 66)">
+                  <rect x="58" y="58" width="84" height="16" rx="8" fill="#c99a9c"/>
+                  <rect x="88" y="46" width="24" height="10" rx="5" fill="#c99a9c"/>
+                </g>
+                <rect x="64" y="76" width="72" height="84" rx="12" fill="#fdf8ee" stroke="#1e1a17" stroke-width="2"/>
+                <circle cx="86" cy="110" r="6" fill="#1e1a17"/>
+                <circle cx="114" cy="110" r="6" fill="#1e1a17"/>
+                <path d="M88 128 Q100 138 112 128" fill="none" stroke="#a2686c" stroke-width="2.5" stroke-linecap="round"/>
+                <rect x="80" y="146" width="40" height="6" rx="3" fill="#f4ede4" stroke="#1e1a17" stroke-width="1.4"/>
+                <ellipse cx="100" cy="172" rx="46" ry="8" fill="#1e1a17" opacity="0.08"/>
+              </svg>
+            </div>
           </a>
 
-          <a class="proj-item" href="project-box.html">
-            <span class="pi-top"><span class="work-num">04 / miniapp</span><span class="arr">↗</span></span>
-            <h3>拾光箱 · 小程序</h3>
-            <p>一个收藏日常的小程序：把照片和文字按时间线收进「拾光箱」，可以随时回看某一段日子。负责功能规划、页面结构与交互流程设计。</p>
-            <div class="tags"><span>微信小程序</span><span>功能规划</span><span>交互设计</span></div>
+          <!-- 03 拾光箱：照片落进箱子 -->
+          <a class="exp-row" href="project-box.html" style="text-decoration:none; color:inherit;">
+            <div class="exp-text">
+              <span class="work-num">03 / miniapp</span>
+              <h2>拾光箱 · 小程序</h2>
+              <p>一个收藏日常的小程序：把照片和文字按时间线收进「拾光箱」，可以随时回看某一段日子。负责功能规划、页面结构与交互流程设计。</p>
+              <div class="tags"><span>微信小程序</span><span>功能规划</span><span>交互设计</span></div>
+              <span class="exp-go">看详情 <span class="arr">↗</span></span>
+            </div>
+            <div class="exp-art" aria-hidden="true">
+              <svg viewBox="0 0 200 200" role="img" aria-label="照片落进箱子">
+                <g transform="rotate(7 108 56)">
+                  <rect x="80" y="34" width="56" height="44" rx="4" fill="#fffdfa" stroke="#1e1a17" stroke-width="2"/>
+                  <circle cx="96" cy="48" r="5" fill="#c99a9c"/>
+                  <path d="M84 70 L98 58 L108 66 L120 52 L132 70 Z" fill="#c99a9c" opacity="0.75"/>
+                </g>
+                <path d="M100 84 L100 112" stroke="#a2686c" stroke-width="2" stroke-dasharray="4 6" stroke-linecap="round"/>
+                <path d="M94 108 L100 116 L106 108" fill="none" stroke="#a2686c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M56 118 L144 118 L136 172 L64 172 Z" fill="#f4ede4" stroke="#1e1a17" stroke-width="2"/>
+                <path d="M56 118 L40 104 L84 100 L100 112 Z" fill="#c99a9c" opacity="0.55"/>
+                <path d="M144 118 L160 104 L116 100 L100 112 Z" fill="#c99a9c" opacity="0.55"/>
+                <ellipse cx="100" cy="178" rx="48" ry="8" fill="#1e1a17" opacity="0.08"/>
+              </svg>
+            </div>
           </a>
+
         </div>
+
+        <p class="sec-note" style="margin-top:26px;">
+          实习做的事搬去了 <a href="experience.html" style="color:var(--rose);">工作经历 →</a>
+        </p>
 
       </div>
     </div>
@@ -88,6 +140,7 @@
       <span class="f-brand">Maylin ✦</span>
       <nav class="foot-nav" aria-label="页脚导航">
         <a href="index.html">首页</a>
+        <a href="experience.html">工作经历</a>
         <a href="projects.html">项目</a>
         <a href="posts.html">文章</a>
         <a href="about.html">关于</a>
