@@ -3,401 +3,605 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>莫墁玉 · 个人主页</title>
-  <meta name="description" content="莫墁玉的个人主页：深圳职业技术大学计算机应用技术专业学生，记录自己的项目作品、学习经历与一些想法。" />
-  <meta name="author" content="莫墁玉" />
-  <meta property="og:title" content="莫墁玉 · 个人主页" />
-  <meta property="og:description" content="记录我的项目、学习和一些想法，欢迎随便逛逛。" />
+  <title>melon ✦ 个人小站</title>
+  <meta name="description" content="melon 的个人小站：记录做过的项目、正在学的东西，和一些零零碎碎的想法。" />
+  <meta name="author" content="melon" />
+  <meta property="og:title" content="melon ✦ 个人小站" />
+  <meta property="og:description" content="记录做过的项目、正在学的东西，和一些零零碎碎的想法。" />
   <meta property="og:type" content="website" />
   <style>
-    /* ========== 设计变量：活泼彩色风 ========== */
+    /* ============================================================
+       设计基调：暖米色 · 衬线大标题 · 玫瑰灰点缀 · 手绘装饰
+       （参考图风格：编辑部感的个人主页）
+       ============================================================ */
     :root {
-      --bg: #fffdf7;
-      --surface: #ffffff;
-      --ink: #2d2a32;
-      --ink-soft: #6b6573;
-      --peach: #ffb38a;
-      --mint: #7fd8be;
-      --sky: #8ecae6;
-      --lilac: #c3b1f5;
-      --lemon: #ffe27a;
-      --rose: #ff9aa2;
-      --radius: 22px;
-      --shadow: 0 8px 24px rgba(45, 42, 50, 0.08);
-      --shadow-hover: 0 12px 32px rgba(45, 42, 50, 0.14);
+      --cream: #faf6f0;       /* 主背景 */
+      --cream-2: #f4ede4;     /* 次级背景 */
+      --card: #fffdfa;        /* 卡片 */
+      --ink: #1e1a17;         /* 主文字 */
+      --ink-70: rgba(30, 26, 23, 0.7);
+      --ink-45: rgba(30, 26, 23, 0.45);
+      --rose: #a2686c;        /* 玫瑰灰主色 */
+      --rose-soft: #c99a9c;
+      --line: rgba(30, 26, 23, 0.12);
+      --serif: Georgia, "Times New Roman", "Songti SC", "STSong", "SimSun", serif;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --r-lg: 20px;
+      --r-sm: 12px;
+      --shadow: 0 10px 30px rgba(88, 62, 45, 0.07);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-      background: var(--bg);
+      background: var(--cream);
       color: var(--ink);
-      line-height: 1.7;
+      font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
-    /* 顶部流动的彩色渐变条，活泼感来源之一 */
-    .rainbow-bar {
-      height: 6px;
-      background: linear-gradient(90deg, var(--rose), var(--peach), var(--lemon), var(--mint), var(--sky), var(--lilac), var(--rose));
-      background-size: 200% 100%;
-      animation: slide 8s linear infinite;
+    /* 细微的纸张颗粒感（纯 CSS，不加载图片） */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      opacity: 0.5;
+      background-image: radial-gradient(rgba(120, 90, 70, 0.06) 1px, transparent 1px);
+      background-size: 4px 4px;
     }
-    @keyframes slide { to { background-position: 200% 0; } }
+    .page { position: relative; z-index: 1; }
 
-    /* ========== 导航 ========== */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255, 253, 247, 0.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(45, 42, 50, 0.06);
+    /* ---------- 导航 ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250, 246, 240, 0.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
     .nav-inner {
-      max-width: 1080px; margin: 0 auto; padding: 14px 24px;
-      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1180px; margin: 0 auto; padding: 18px 32px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
     }
-    .logo { font-weight: 800; font-size: 1.15rem; text-decoration: none; color: var(--ink); }
-    .logo span { background: linear-gradient(120deg, var(--rose), var(--lilac)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .nav-links { display: flex; gap: 8px; list-style: none; }
+    .brand {
+      font-family: var(--serif); font-size: 1.35rem; letter-spacing: -0.01em;
+      color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .brand .star { color: var(--rose); font-size: 0.9rem; }
+    .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
     .nav-links a {
-      text-decoration: none; color: var(--ink-soft); font-size: 0.95rem;
-      padding: 8px 14px; border-radius: 999px; transition: all 0.2s;
+      color: var(--ink-70); text-decoration: none; font-size: 0.92rem;
+      letter-spacing: 0.01em; transition: color 0.2s;
     }
-    .nav-links a:hover, .nav-links a:focus-visible { background: var(--lemon); color: var(--ink); }
-    /* 移动端汉堡按钮：默认隐藏，小屏显示 */
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
+    .nav-cta {
+      background: var(--rose); color: #fff9f5 !important; text-decoration: none;
+      padding: 10px 22px; border-radius: 999px; font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: #8f5a5e; transform: translateY(-1px); }
     .menu-btn {
-      display: none; background: none; border: 2px solid var(--ink);
-      border-radius: 12px; padding: 6px 10px; font-size: 1.1rem; cursor: pointer;
+      display: none; background: none; border: 1px solid var(--line);
+      border-radius: 999px; padding: 7px 14px; font-size: 0.95rem;
+      color: var(--ink); cursor: pointer;
     }
-    @media (max-width: 720px) {
+    @media (max-width: 860px) {
       .menu-btn { display: block; }
       .nav-links {
-        display: none; position: absolute; top: 100%; left: 0; right: 0;
-        flex-direction: column; background: var(--surface);
-        padding: 12px 24px 20px; gap: 4px;
-        box-shadow: var(--shadow); border-bottom-left-radius: var(--radius);
-        border-bottom-right-radius: var(--radius);
+        position: absolute; top: 100%; left: 0; right: 0; flex-direction: column;
+        align-items: flex-start; gap: 0; background: var(--card);
+        border-bottom: 1px solid var(--line); padding: 8px 32px 20px; display: none;
       }
       .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .nav-links li:last-child a { border-bottom: none; margin-top: 12px; text-align: center; }
     }
 
-    /* ========== 首屏 Hero ========== */
-    .hero { max-width: 1080px; margin: 0 auto; padding: 72px 24px 56px; }
-    .hero-badge {
-      display: inline-block; background: var(--mint); color: #14532d;
-      padding: 6px 16px; border-radius: 999px; font-size: 0.9rem; font-weight: 700; margin-bottom: 20px;
+    /* ---------- 通用排版 ---------- */
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+    .eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-45); display: inline-flex; align-items: center; gap: 8px;
     }
-    .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.25; letter-spacing: 0.5px; }
-    .hero h1 .hl { background: linear-gradient(120deg, var(--peach), var(--rose)); padding: 0 8px; border-radius: 10px; }
-    .hero p.sub { margin-top: 18px; color: var(--ink-soft); font-size: 1.1rem; max-width: 620px; }
-    .hero-cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; }
+    .eyebrow .arrow { color: var(--rose); letter-spacing: 0; font-size: 1rem; }
+    .display {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(3rem, 7.4vw, 5.6rem);
+      line-height: 0.94; letter-spacing: -0.025em;
+      margin: 22px 0 0;
+    }
+    .display span { display: block; }
+    .display .italic { font-style: italic; color: var(--rose); }
+    .italic-line {
+      font-family: var(--serif); font-style: italic; color: var(--rose);
+      font-size: clamp(1.05rem, 2vw, 1.4rem); margin-top: 26px;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .italic-line::before { content: "→"; font-style: normal; color: var(--ink-45); }
+    p.lead {
+      margin-top: 22px; max-width: 46ch;
+      font-size: 0.98rem; line-height: 1.95; color: var(--ink-70);
+    }
+    .section { padding: 96px 0 0; }
+    .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .sec-title {
+      font-family: var(--serif); font-weight: 400; font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+      letter-spacing: -0.02em; display: flex; align-items: center; gap: 14px;
+    }
+    .sec-title .star { color: var(--rose); font-size: 0.6em; }
+    .sec-note { font-family: var(--serif); font-style: italic; color: var(--ink-45); font-size: 1rem; }
+    .rule { height: 1px; background: var(--line); margin: 26px 0 0; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 76px 0 0; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; }
+    .pills { list-style: none; display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
+    .pills li {
+      background: rgba(30, 26, 23, 0.055); color: var(--ink-70);
+      font-size: 0.82rem; padding: 7px 15px; border-radius: 999px;
+      border: 1px solid rgba(30, 26, 23, 0.04);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
     .btn {
-      display: inline-block; text-decoration: none; font-weight: 700;
-      padding: 13px 28px; border-radius: 999px; transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 14px 26px; border-radius: 999px; text-decoration: none;
+      font-size: 0.92rem; transition: transform 0.2s, background 0.2s, color 0.2s;
+      border: 1px solid var(--ink);
     }
-    .btn:hover, .btn:focus-visible { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-    .btn-primary { background: var(--ink); color: #fff; }
-    .btn-ghost { background: var(--surface); color: var(--ink); border: 2px solid var(--ink); }
-    /* 首屏右侧漂浮色块装饰 */
-    .hero-wrap { position: relative; }
-    .float-chip {
-      position: absolute; border-radius: 18px; z-index: -1;
-      animation: floaty 6s ease-in-out infinite;
-    }
-    @keyframes floaty { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-14px) rotate(4deg); } }
+    .btn-dark { background: var(--ink); color: #fbf7f2; }
+    .btn-dark:hover { transform: translateY(-2px); background: #322b26; }
+    .btn-outline { background: transparent; color: var(--ink); }
+    .btn-outline:hover { transform: translateY(-2px); background: rgba(30, 26, 23, 0.05); }
+    .btn-rose { background: var(--rose); border-color: var(--rose); color: #fff9f5; }
+    .btn-rose:hover { background: #8f5a5e; transform: translateY(-2px); }
 
-    /* ========== 通用区块 ========== */
-    section { max-width: 1080px; margin: 0 auto; padding: 56px 24px; }
-    .sec-title { font-size: 1.7rem; margin-bottom: 8px; }
-    .sec-sub { color: var(--ink-soft); margin-bottom: 32px; }
-
-    /* ========== 项目卡片网格 ========== */
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-    .card {
-      background: var(--surface); border-radius: var(--radius);
-      padding: 26px; box-shadow: var(--shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex; flex-direction: column; gap: 10px;
+    /* 右侧「名片」：格纸底 + 轻微倾斜 + 手绘标注 */
+    .card-stage { position: relative; }
+    .me-card {
+      position: relative; transform: rotate(-2deg);
+      background:
+        repeating-linear-gradient(to right, rgba(163, 128, 96, 0.16) 0 1px, transparent 1px 34px),
+        repeating-linear-gradient(to bottom, rgba(163, 128, 96, 0.16) 0 1px, transparent 1px 34px),
+        #f6ecdc;
+      border-radius: 6px; padding: 46px 30px 34px;
+      box-shadow: 0 22px 44px rgba(120, 84, 58, 0.14);
+      text-align: center;
     }
-    .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
-    .card .emoji {
-      width: 52px; height: 52px; border-radius: 16px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+    .me-card .mono {
+      width: 96px; height: 96px; margin: 0 auto 18px; border-radius: 50%;
+      background: #fffdfa; border: 1px solid rgba(163, 128, 96, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-style: italic; font-size: 2.2rem; color: var(--rose);
     }
-    .card h3 { font-size: 1.1rem; }
-    .card p { color: var(--ink-soft); font-size: 0.95rem; flex: 1; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { font-size: 0.75rem; padding: 4px 10px; border-radius: 999px; font-weight: 600; }
-
-    /* ========== 时间线：实习/教育经历 ========== */
-    .timeline { position: relative; padding-left: 28px; }
-    .timeline::before {
-      content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px;
-      width: 4px; border-radius: 2px;
-      background: linear-gradient(var(--rose), var(--mint));
+    .me-card h2 {
+      font-family: var(--serif); font-weight: 400; font-size: 2rem;
+      letter-spacing: -0.01em; line-height: 1.1;
     }
-    .tl-item { position: relative; margin-bottom: 28px; }
-    .tl-item::before {
-      content: ""; position: absolute; left: -28px; top: 8px;
-      width: 14px; height: 14px; border-radius: 50%;
-      background: var(--surface); border: 4px solid var(--sky);
+    .me-card h2 em { font-style: italic; color: var(--rose); }
+    .me-card .sub {
+      margin-top: 10px; font-size: 0.82rem; letter-spacing: 0.06em; color: rgba(90, 68, 52, 0.7);
     }
-    .tl-item h3 { font-size: 1.05rem; }
-    .tl-item .meta { font-size: 0.85rem; color: var(--ink-soft); margin: 2px 0 8px; }
-    .tl-item p { color: var(--ink-soft); font-size: 0.95rem; }
-
-    /* ========== 技能条 ========== */
-    .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; }
-    @media (max-width: 600px) { .skills { grid-template-columns: 1fr; } }
-    .skill .label { display: flex; justify-content: space-between; font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
-    .skill .bar { height: 10px; border-radius: 999px; background: rgba(45, 42, 50, 0.08); overflow: hidden; }
-    .skill .fill { height: 100%; border-radius: 999px; }
-
-    /* ========== 联系区 ========== */
-    .contact-box {
-      background: linear-gradient(135deg, var(--lilac), var(--sky));
-      border-radius: var(--radius); padding: 48px 32px; text-align: center; color: #1f2440;
+    .me-card .note {
+      margin-top: 22px; background: #fffdfa; border-radius: 999px;
+      padding: 12px 20px; font-family: var(--serif); font-style: italic;
+      font-size: 0.92rem; color: #5a4434; box-shadow: 0 6px 14px rgba(120, 84, 58, 0.08);
     }
-    .contact-box h2 { font-size: 1.6rem; margin-bottom: 10px; }
-    .contact-box p { margin-bottom: 24px; }
-    .contact-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-    .contact-links a {
-      background: rgba(255, 255, 255, 0.85); color: var(--ink);
-      padding: 11px 22px; border-radius: 999px; text-decoration: none; font-weight: 700;
-      transition: transform 0.2s;
+    /* 浮在外面的小贴纸 */
+    .sticker {
+      position: absolute; z-index: 3; background: #fffdfa;
+      border: 1px solid rgba(163, 128, 96, 0.22);
+      border-radius: 999px; padding: 7px 15px;
+      font-size: 0.76rem; color: #5a4434;
+      box-shadow: 0 8px 18px rgba(120, 84, 58, 0.12);
+      white-space: nowrap;
     }
-    .contact-links a:hover, .contact-links a:focus-visible { transform: translateY(-2px); }
-    /* 微信复制按钮：与链接保持一致的视觉，但用 button 保证可访问性 */
-    .copy-wx {
-      background: rgba(255, 255, 255, 0.85); color: var(--ink);
-      padding: 11px 22px; border-radius: 999px; border: none; cursor: pointer;
-      font-family: inherit; font-size: 1rem; font-weight: 700;
-      transition: transform 0.2s;
+    .sticker.a { top: -14px; left: -6px; transform: rotate(-5deg); }
+    .sticker.b { top: -18px; right: 12px; transform: rotate(3deg); }
+    .sticker.c { bottom: -14px; right: -4px; transform: rotate(-3deg); }
+    .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #6fbf9a; margin-right: 6px; vertical-align: 1px; }
+    /* 手绘标注 */
+    .annot {
+      position: absolute; font-family: var(--serif); font-style: italic;
+      font-size: 0.82rem; color: #7a5b45; z-index: 3; white-space: nowrap;
     }
-    .copy-wx:hover, .copy-wx:focus-visible { transform: translateY(-2px); }
-    .wx-tip { margin-top: 16px; font-size: 0.85rem; color: #3c4160; opacity: 0.8; }
+    .annot.l1 { left: -46px; top: 34%; }
+    .annot.l2 { right: -40px; top: 52%; }
+    .annot.l3 { left: -30px; bottom: 16%; }
 
-    footer { text-align: center; color: var(--ink-soft); font-size: 0.85rem; padding: 32px 0 40px; }
+    /* ---------- 项目 ---------- */
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 42px; }
+    @media (max-width: 980px) { .work-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 660px) { .work-grid { grid-template-columns: 1fr; } }
+    .work-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
+      padding: 28px 26px 26px; display: flex; flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .work-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: rgba(162, 104, 108, 0.35); }
+    .work-num {
+      font-family: var(--serif); font-style: italic; font-size: 0.9rem;
+      color: var(--rose-soft); letter-spacing: 0.04em;
+    }
+    .work-card h3 {
+      font-family: var(--serif); font-weight: 400; font-size: 1.34rem;
+      letter-spacing: -0.01em; margin: 8px 0 12px; line-height: 1.35;
+    }
+    .work-card p { font-size: 0.9rem; line-height: 1.85; color: var(--ink-70); flex: 1; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
+    .tags span {
+      font-size: 0.72rem; color: var(--rose); background: rgba(162, 104, 108, 0.09);
+      padding: 5px 11px; border-radius: 999px;
+    }
 
-    /* 无障碍：键盘焦点可见 */
-    a:focus-visible, button:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+    /* ---------- Life：卡片列表 ---------- */
+    .life-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; margin-top: 42px; }
+    @media (max-width: 860px) { .life-grid { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--r-lg); padding: 30px 30px 26px;
+    }
+    .panel-label {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-45); display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
+    }
+    .panel-label .arrow { color: var(--rose); letter-spacing: 0; font-size: 1rem; }
+    .fact-list { list-style: none; display: grid; gap: 14px; }
+    .fact-list li {
+      display: flex; gap: 12px; font-size: 0.93rem; line-height: 1.7; color: var(--ink-70);
+    }
+    .fact-list li .mark { color: var(--rose); flex-shrink: 0; font-size: 0.8rem; margin-top: 3px; }
+    .timeline-simple { list-style: none; display: grid; gap: 22px; }
+    .timeline-simple li { border-left: 1px solid var(--line); padding-left: 18px; position: relative; }
+    .timeline-simple li::before {
+      content: ""; position: absolute; left: -4px; top: 8px;
+      width: 7px; height: 7px; border-radius: 50%; background: var(--rose-soft);
+    }
+    .timeline-simple h4 { font-size: 0.96rem; font-weight: 600; letter-spacing: 0.01em; }
+    .timeline-simple .when { font-size: 0.76rem; letter-spacing: 0.1em; color: var(--ink-45); margin: 3px 0 6px; text-transform: uppercase; }
+    .timeline-simple p { font-size: 0.88rem; line-height: 1.75; color: var(--ink-70); }
 
+    /* ---------- Contact ---------- */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 42px; }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+    .hello-card {
+      position: relative; overflow: hidden;
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
+      padding: 38px 34px 32px;
+    }
+    .hello-card h3 {
+      font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2rem);
+      line-height: 1.3; letter-spacing: -0.01em;
+    }
+    .hello-card h3 em { font-style: italic; color: var(--rose); display: block; }
+    .hello-card > p { margin-top: 14px; font-size: 0.92rem; line-height: 1.85; color: var(--ink-70); max-width: 40ch; }
+    .hello-card .sparkle-big {
+      position: absolute; right: 26px; top: 26px; width: 62px; height: 62px;
+      color: rgba(162, 104, 108, 0.13); pointer-events: none;
+    }
+    .row-list { list-style: none; display: grid; gap: 10px; margin: 26px 0 24px; }
+    .row {
+      display: flex; align-items: center; gap: 14px;
+      border: 1px solid var(--line); border-radius: var(--r-sm);
+      padding: 12px 16px; background: rgba(250, 246, 240, 0.6);
+      text-decoration: none; color: var(--ink); width: 100%; text-align: left;
+      font-family: inherit; font-size: 0.95rem; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .row:hover, .row:focus-visible { border-color: rgba(162, 104, 108, 0.5); background: #fffdfa; }
+    .row .icon {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(162, 104, 108, 0.1); color: var(--rose);
+      display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+    }
+    .row .text { display: flex; flex-direction: column; gap: 1px; overflow: hidden; }
+    .row .label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-45); }
+    .row .value { font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .copy-hint { font-size: 0.78rem; color: var(--ink-45); margin-top: 4px; }
+
+    .side-stack { display: grid; gap: 22px; align-content: start; }
+    .status-card {
+      background: rgba(162, 104, 108, 0.055); border: 1px solid rgba(162, 104, 108, 0.18);
+      border-radius: var(--r-lg); padding: 24px 28px;
+    }
+    .status-card .status-top { display: flex; align-items: center; gap: 8px; font-family: var(--serif); font-style: italic; color: #7a5b45; font-size: 0.88rem; }
+    .status-card p { margin-top: 8px; font-size: 0.88rem; line-height: 1.75; color: var(--ink-70); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      margin-top: 96px; border-top: 1px solid var(--line); padding: 30px 0 44px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+      font-size: 0.8rem; color: var(--ink-45);
+    }
+    footer .f-brand { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink-70); }
+
+    /* ---------- 焦点与动效偏好 ---------- */
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: 4px; }
     @media (prefers-reduced-motion: reduce) {
-      .rainbow-bar, .float-chip { animation: none; }
       html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
+
+    /* ---------- 小屏微调 ---------- */
+    @media (max-width: 860px) {
+      .wrap, .nav-inner { padding: 0 20px; }
+      .nav-inner { padding: 14px 20px; }
+      .hero { padding-top: 44px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+      .card-stage { max-width: 420px; margin: 0 auto; }
+      .annot.l1, .annot.l2, .annot.l3 { display: none; }
+      .section { padding-top: 72px; }
+      footer { margin-top: 72px; }
     }
   </style>
 </head>
 <body>
-  <div class="rainbow-bar" aria-hidden="true"></div>
+<div class="page">
 
-  <nav aria-label="主导航">
+  <!-- ===================== 导航 ===================== -->
+  <header class="nav">
     <div class="nav-inner">
-      <a class="logo" href="#top">墁玉 <span>· 个人小站</span></a>
+      <a class="brand" href="#top">melon <span class="star">✦</span></a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">关于我</a></li>
-        <li><a href="#projects">项目作品</a></li>
-        <li><a href="#experience">经历</a></li>
-        <li><a href="#skills">技能</a></li>
-        <li><a href="#contact">联系我</a></li>
+        <li><a href="#hello">Hello</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#life">Life</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="nav-cta" href="#contact">Say Hello</a></li>
       </ul>
-    </div>
-  </nav>
-
-  <header class="hero hero-wrap" id="top">
-    <div class="float-chip" style="top: 60px; right: 6%; width: 90px; height: 90px; background: var(--lemon);" aria-hidden="true"></div>
-    <div class="float-chip" style="top: 220px; right: 16%; width: 56px; height: 56px; background: var(--rose); animation-delay: 1.5s;" aria-hidden="true"></div>
-    <div class="float-chip" style="bottom: 20px; right: 34%; width: 40px; height: 40px; background: var(--mint); animation-delay: 3s;" aria-hidden="true"></div>
-
-    <span class="hero-badge">🎓 深圳职业技术大学 · 计算机应用技术</span>
-    <h1>你好，我是<span class="hl">莫墁玉</span><br />一个喜欢把想法做成能用的东西的人</h1>
-    <p class="sub">
-      这里放着我的项目、学习经历和一路走来的一些记录。
-      有做过的系统、折腾过的硬件，也有一些正在尝试的新东西。
-      欢迎随便逛逛，也欢迎来聊聊任何有趣的话题 🙂
-    </p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="#projects">看我的项目 →</a>
-      <a class="btn btn-ghost" href="#contact">打个招呼</a>
     </div>
   </header>
 
-  <section id="about">
-    <h2 class="sec-title">🧸 关于我</h2>
-    <p class="sec-sub">技术出身的产品人，沟通起来不需要翻译</p>
-    <div class="grid">
-      <div class="card">
-        <div class="emoji" style="background: var(--peach);">💻</div>
-        <h3>懂技术的产品思维</h3>
-        <p>计算机应用技术专业出身，能看懂接口和数据库结构，跟开发同学对需求时少走弯路、少说「这个很简单」。</p>
-      </div>
-      <div class="card">
-        <div class="emoji" style="background: var(--mint);">📊</div>
-        <h3>数据驱动的习惯</h3>
-        <p>熟练使用 Excel 透视表、VLOOKUP 做数据整理与分析，实习期间用 A/B 测试优化卖点、提升转化率。</p>
-      </div>
-      <div class="card">
-        <div class="emoji" style="background: var(--lilac);">🤝</div>
-        <h3>跨团队协作经验</h3>
-        <p>项目经验覆盖需求分析、PRD 撰写、原型设计与开发跟进，习惯站在设计与开发视角拆解问题、推动落地。</p>
-      </div>
-    </div>
-  </section>
+  <!-- ===================== 首屏 ===================== -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow"><span class="arrow">↳</span> hi, i'm melon</p>
 
-  <section id="projects">
-    <h2 class="sec-title">🚀 项目作品</h2>
-    <p class="sec-sub">从想法到落地，记录我做过的东西</p>
-    <div class="grid">
-      <div class="card">
-        <div class="emoji" style="background: var(--sky);">🧩</div>
-        <h3>B 端后台管理系统</h3>
-        <p>面向内部运营的后台管理系统。负责业务流程梳理、需求文档撰写与 Axure 原型设计，梳理角色权限与数据看板模块。</p>
-        <div class="tags">
-          <span class="tag" style="background: #e0f2fe;">需求分析</span>
-          <span class="tag" style="background: #fef3c7;">PRD</span>
-          <span class="tag" style="background: #fce7f3;">Axure</span>
+          <h1 class="display">
+            <span>Builder.</span>
+            <span class="italic">of small</span>
+            <span>things.</span>
+          </h1>
+
+          <p class="italic-line">care more about the details</p>
+
+          <p class="lead">
+            我是 melon，学计算机的学生，在深圳。
+            喜欢把脑子里的想法做成能真正跑起来的东西——一个后台系统、一台会自己开盖的垃圾桶、一个改了又改的小网站。
+            做事的习惯是：先把「为什么」想清楚，再动手；做完回头看数据。
+          </p>
+
+          <ul class="pills">
+            <li>计算机应用技术</li>
+            <li>B 端系统</li>
+            <li>智能硬件</li>
+            <li>数据分析</li>
+            <li>海外营销实习</li>
+          </ul>
+
+          <div class="actions">
+            <a class="btn btn-dark" href="#work">See what I've built <span aria-hidden="true">→</span></a>
+            <a class="btn btn-outline" href="#life">My world <span aria-hidden="true">✦</span></a>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="emoji" style="background: var(--lemon);">🏠</div>
-        <h3>智能硬件配套产品</h3>
-        <p>参与智能硬件产品的配套应用设计，负责用户场景分析、功能优先级排序，与硬件、软件团队协作完成功能闭环。</p>
-        <div class="tags">
-          <span class="tag" style="background: #dcfce7;">智能硬件</span>
-          <span class="tag" style="background: #ede9fe;">场景分析</span>
-          <span class="tag" style="background: #ffe4e6;">跨团队协作</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="emoji" style="background: var(--rose);">🛒</div>
-        <h3>亚马逊运营优化实践</h3>
-        <p>实习期间收集整理用户反馈，参与 Listing 卖点优化与 A/B 测试，用数据复盘改进方向，助力转化率提升。</p>
-        <div class="tags">
-          <span class="tag" style="background: #dcfce7;">用户反馈</span>
-          <span class="tag" style="background: #fef3c7;">A/B 测试</span>
-          <span class="tag" style="background: #e0f2fe;">数据分析</span>
+
+        <!-- 右侧名片：想换成真人照片的话，把 .mono 换成 <img src="photo.jpg" width="96" height="96" alt="melon"> 即可 -->
+        <div class="card-stage">
+          <div class="annot l1">学计算机的 ↗</div>
+          <div class="annot l2">↖ 爱折腾硬件</div>
+          <div class="annot l3">喜欢把流程画成图 ↗</div>
+
+          <span class="sticker a">✓ that's me!</span>
+          <span class="sticker b"><span class="dot"></span>在深圳 · 慢热型</span>
+          <span class="sticker c">开工前先画图 ✦</span>
+
+          <div class="me-card">
+            <div class="mono">m</div>
+            <h2>Meet<br /><em>melon</em></h2>
+            <p class="sub">builder · learner · note-taker</p>
+            <p class="note">"make it work, then make it clear"</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="experience">
-    <h2 class="sec-title">📍 我的经历</h2>
-    <p class="sec-sub">从校园到实习，一路做过的事</p>
-    <div class="timeline">
-      <div class="tl-item">
-        <h3>亚马逊推广助理（实习）</h3>
-        <div class="meta">实习经历 · 跨境电商方向</div>
-        <p>负责用户反馈收集与整理，参与产品卖点优化与 A/B 测试，通过数据分析定位改进点，推动转化率提升。</p>
+  <!-- ===================== 项目 ===================== -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="star">✦</span> Work</h2>
+        <p class="sec-note">从想法到能跑起来</p>
       </div>
-      <div class="tl-item">
-        <h3>B 端后台管理系统 & 智能硬件项目</h3>
-        <div class="meta">校内项目 · 担任产品角色</div>
-        <p>完成需求调研、PRD 撰写与原型设计，协调开发与设计资源，跟进功能验收与迭代。</p>
-      </div>
-      <div class="tl-item">
-        <h3>深圳职业技术大学 · 计算机应用技术</h3>
-        <div class="meta">2022.09 — 2026.07（预计）</div>
-        <p>系统学习程序设计、数据库、Web 开发等课程，具备技术理解力与数据分析基础（Excel、透视表、VLOOKUP）。</p>
+      <div class="rule"></div>
+
+      <div class="work-grid">
+        <article class="work-card">
+          <span class="work-num">01 / system</span>
+          <h3>花店后台管理系统</h3>
+          <p>给线下花店做的轻量后台：商品管理、库存监控、缺货提醒、订单处理。用 SQL 建了数据模型，做到下单自动扣库存、补货自动加回去。</p>
+          <div class="tags"><span>需求梳理</span><span>数据库</span><span>交互设计</span></div>
+        </article>
+
+        <article class="work-card">
+          <span class="work-num">02 / hardware</span>
+          <h3>树莓派智能垃圾桶</h3>
+          <p>软硬件结合的小项目：识别、自动开盖、语音提示。反复调参数、跑测试，一点点把识别率往上推，也学会了怎么排查硬件的怪问题。</p>
+          <div class="tags"><span>硬件调试</span><span>参数调优</span><span>测试</span></div>
+        </article>
+
+        <article class="work-card">
+          <span class="work-num">03 / marketing</span>
+          <h3>海外红人营销</h3>
+          <p>实习期间做的事：按粉丝量、互动率、账号调性筛选合作达人，跟进内容与上线节点，用对照测试判断到底哪种内容更有效。</p>
+          <div class="tags"><span>内容筛选</span><span>A/B 测试</span><span>数据复盘</span></div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section id="skills">
-    <h2 class="sec-title">🛠️ 技能清单</h2>
-    <p class="sec-sub">目前在用的工具和积累的能力</p>
-    <div class="skills">
-      <div class="skill">
-        <div class="label"><span>需求分析 & PRD 撰写</span><span>熟练</span></div>
-        <div class="bar"><div class="fill" style="width: 88%; background: var(--rose);"></div></div>
+  <!-- ===================== Life ===================== -->
+  <section class="section" id="life">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="star">✦</span> Life</h2>
+        <p class="sec-note">一些零零碎碎</p>
       </div>
-      <div class="skill">
-        <div class="label"><span>原型设计（Axure / 墨刀）</span><span>熟练</span></div>
-        <div class="bar"><div class="fill" style="width: 82%; background: var(--peach);"></div></div>
-      </div>
-      <div class="skill">
-        <div class="label"><span>Excel 数据分析（透视表 / VLOOKUP）</span><span>熟练</span></div>
-        <div class="bar"><div class="fill" style="width: 85%; background: var(--mint);"></div></div>
-      </div>
-      <div class="skill">
-        <div class="label"><span>跨团队沟通协作</span><span>熟练</span></div>
-        <div class="bar"><div class="fill" style="width: 86%; background: var(--sky);"></div></div>
-      </div>
-      <div class="skill">
-        <div class="label"><span>技术理解（接口 / 数据库 / Web）</span><span>良好</span></div>
-        <div class="bar"><div class="fill" style="width: 75%; background: var(--lilac);"></div></div>
-      </div>
-      <div class="skill">
-        <div class="label"><span>A/B 测试 & 转化优化</span><span>良好</span></div>
-        <div class="bar"><div class="fill" style="width: 72%; background: var(--lemon);"></div></div>
+      <div class="rule"></div>
+
+      <div class="life-grid">
+        <!-- 时间线：内容可自行替换 -->
+        <div class="panel">
+          <p class="panel-label"><span class="arrow">↳</span> 最近与从前</p>
+          <ul class="timeline-simple">
+            <li>
+              <h4>海外红人营销实习</h4>
+              <p class="when">2026.03 — 2026.06</p>
+              <p>和海外博主对接、跟进合作节点，搭建项目台账，顺带学会了怎么用数据说服别人。</p>
+            </li>
+            <li>
+              <h4>花店后台系统 · 智能垃圾桶</h4>
+              <p class="when">在校项目</p>
+              <p>一个偏软件，一个偏硬件。共同点是都没有标准答案，都得自己把问题拆开。</p>
+            </li>
+            <li>
+              <h4>深圳职业技术大学 · 计算机应用技术</h4>
+              <p class="when">2023.09 — 2026.07</p>
+              <p>数据库、动态网页、数据分析、App 设计……学的都是从「能用」出发的东西。</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 小事清单：可自由增删 -->
+        <div class="panel">
+          <p class="panel-label"><span class="arrow">↳</span> 关于我的一些小事</p>
+          <ul class="fact-list">
+            <li><span class="mark">✦</span><span>写文档前会先画流程图，不画完不太敢开始写。</span></li>
+            <li><span class="mark">✦</span><span>喜欢表格和清单，Excel 透视表用得比 PPT 熟。</span></li>
+            <li><span class="mark">✦</span><span>会一点 HTML / CSS，这个小站是自己一行行改出来的。</span></li>
+            <li><span class="mark">✦</span><span>遇到问题时第一反应是「能不能拆成更小的步骤」。</span></li>
+            <li><span class="mark">✦</span><span>正在慢慢学 SEO 和数据分析，边学边往这个站上加东西。</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <div class="contact-box">
-      <h2>📮 一起聊聊？</h2>
-      <p>欢迎来聊技术、产品、SEO，或者任何你觉得有趣的事情！</p>
-      <div class="contact-links">
-        <a href="mailto:2423677336@qq.com">✉️ 2423677336@qq.com</a>
-        <button type="button" class="copy-wx" id="copyWx" data-wx="mo13728562801">💬 微信：mo13728562801</button>
+  <!-- ===================== Contact ===================== -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title"><span class="star">✦</span> Say Hello</h2>
+        <p class="sec-note">i love meeting new people</p>
       </div>
-      <p class="wx-tip" id="wxTip" role="status" aria-live="polite">点击微信可一键复制，加好友时注明来意 🙂</p>
+      <div class="rule"></div>
+
+      <div class="contact-grid">
+        <div class="hello-card">
+          <svg class="sparkle-big" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4L12 0z"/>
+          </svg>
+          <h3>Building something?<em>or just want to chat?</em></h3>
+          <p>想聊技术、聊设计、聊做过的小项目，或者只是想打个招呼，都欢迎。</p>
+
+          <ul class="row-list">
+            <li>
+              <a class="row" href="mailto:2423677336@qq.com">
+                <span class="icon" aria-hidden="true">✉</span>
+                <span class="text">
+                  <span class="label">Email</span>
+                  <span class="value">2423677336@qq.com</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <button class="row" type="button" id="copyWx" data-wx="mo13728562801">
+                <span class="icon" aria-hidden="true">✆</span>
+                <span class="text">
+                  <span class="label">WeChat</span>
+                  <span class="value">mo13728562801</span>
+                </span>
+              </button>
+            </li>
+          </ul>
+
+          <a class="btn btn-rose" href="mailto:2423677336@qq.com">Say hello <span aria-hidden="true">→</span></a>
+          <p class="copy-hint" id="copyHint" role="status" aria-live="polite">点微信那一栏可以直接复制微信号。</p>
+        </div>
+
+        <div class="side-stack">
+          <div class="panel">
+            <p class="panel-label"><span class="arrow">→</span> Open to</p>
+            <ul class="fact-list">
+              <li><span class="mark">✦</span><span>有趣的小项目，一起做点能上线的</span></li>
+              <li><span class="mark">✦</span><span>软硬件结合的东西，愿意折腾硬件</span></li>
+              <li><span class="mark">✦</span><span>网站互评：你挑我毛病，我挑你毛病</span></li>
+              <li><span class="mark">✦</span><span>技术、设计、数据方面的闲聊</span></li>
+            </ul>
+          </div>
+
+          <div class="status-card">
+            <p class="status-top"><span class="dot"></span>在深圳，随时可以聊</p>
+            <p>通常在晚上回消息更快一些。加好友时注明一下来意就好 🙂</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer>
-    © 2026 莫墁玉 · 用一杯奶茶的时间做出来的小站 🧋
-  </footer>
+  <!-- ===================== 页脚 ===================== -->
+  <div class="wrap">
+    <footer>
+      <span class="f-brand">melon ✦</span>
+      <span>© 2026 · 慢慢改出来的一个小站</span>
+    </footer>
+  </div>
+</div>
 
-  <script>
-    // 移动端菜单开关：点击汉堡按钮切换菜单，并同步 aria-expanded 状态
-    var menuBtn = document.getElementById('menuBtn');
-    var navLinks = document.getElementById('navLinks');
-    if (menuBtn && navLinks) {
-      menuBtn.addEventListener('click', function () {
-        var open = navLinks.classList.toggle('open');
-        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        menuBtn.textContent = open ? '✕' : '☰';
-      });
-      // 点击菜单项后自动收起菜单（移动端体验）
-      navLinks.addEventListener('click', function (e) {
-        if (e.target.tagName === 'A') {
-          navLinks.classList.remove('open');
-          menuBtn.setAttribute('aria-expanded', 'false');
-          menuBtn.textContent = '☰';
-        }
-      });
-    }
-  </script>
-  <script>
-    // 微信一键复制：优先使用 Clipboard API，失败时回退到 execCommand
-    var copyWx = document.getElementById('copyWx');
-    var wxTip = document.getElementById('wxTip');
-    if (copyWx && wxTip) {
-      copyWx.addEventListener('click', function () {
-        var wx = copyWx.dataset.wx;
-        function done() { wxTip.textContent = '✅ 微信号已复制：' + wx; }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(wx).then(done).catch(fallback);
-        } else {
-          fallback();
-        }
-        function fallback() {
-          var ta = document.createElement('textarea');
-          ta.value = wx;
-          ta.setAttribute('readonly', '');
-          ta.style.position = 'fixed';
-          ta.style.opacity = '0';
-          document.body.appendChild(ta);
-          ta.select();
-          try { document.execCommand('copy'); done(); } catch (e) { wxTip.textContent = '微信号：' + wx + '（请手动复制）'; }
-          document.body.removeChild(ta);
-        }
-      });
-    }
-  </script>
+<script>
+  // 移动端菜单
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = '☰';
+      }
+    });
+  }
+
+  // 微信一键复制
+  var copyBtn = document.getElementById('copyWx');
+  var hint = document.getElementById('copyHint');
+  if (copyBtn && hint) {
+    copyBtn.addEventListener('click', function () {
+      var wx = copyBtn.dataset.wx;
+      function ok() { hint.textContent = '✅ 微信号已复制：' + wx; }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = wx;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); ok(); }
+        catch (err) { hint.textContent = '微信号：' + wx + '（请手动复制）'; }
+        document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(wx).then(ok).catch(fallback);
+      } else {
+        fallback();
+      }
+    });
+  }
+</script>
 </body>
 </html>
