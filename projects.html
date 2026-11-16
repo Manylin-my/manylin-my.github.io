@@ -7,7 +7,7 @@
   <meta name="description" content="Maylin 做过的项目：花店后台管理系统、树莓派智能垃圾桶、拾光箱小程序。" />
   <meta name="author" content="Maylin" />
   <meta property="og:title" content="项目 · Maylin's blog" />
-  <meta property="og:description" content="三件做过的事，每件都画了一个小元素。" />
+  <meta property="og:description" content="三件做过的事，被一条线串在一起。" />
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -35,29 +35,27 @@
 
         <div class="section-title-row">
           <div>
-            <p class="eyebrow"><span class="arrow">↳</span> work</p>
+            <p class="eyebrow"><span class="arrow">↳</span> portfolio</p>
             <h1 class="display" style="margin-top:14px;">
               <span>Things I</span>
               <span class="italic">made.</span>
             </h1>
           </div>
-          <p class="sec-note">三件做过的事 · 每件配了一个小元素</p>
+          <p class="sec-note">三件做过的事<br />点圆圈，看它是怎么回事</p>
         </div>
         <div class="rule"></div>
 
-        <div class="exp-list">
+        <div class="tl">
 
           <!-- 01 花店：一朵花 -->
-          <a class="exp-row" href="project-flower.html" style="text-decoration:none; color:inherit;">
-            <div class="exp-text">
-              <span class="work-num">01 / system</span>
-              <h2>花店后台管理系统</h2>
-              <p>给线下花店做的轻量后台：商品管理、库存监控、缺货提醒、订单处理。用 SQL 建了数据模型，做到下单自动扣库存、补货自动加回去。</p>
-              <div class="tags"><span>需求梳理</span><span>数据库</span><span>交互设计</span></div>
-              <span class="exp-go">看详情 <span class="arr">↗</span></span>
-            </div>
-            <div class="exp-art" aria-hidden="true">
-              <svg viewBox="0 0 200 200" role="img" aria-label="一朵花">
+          <article class="tl-item">
+            <svg class="tl-seg" viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M100 -1 C 108 52, 92 148, 100 201" vector-effect="non-scaling-stroke" />
+            </svg>
+
+            <button class="tl-node" type="button" aria-expanded="false" aria-controls="tl-1"
+                    aria-label="展开「花店后台管理系统」的简介">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
                 <path d="M100 188 C96 156 105 122 100 98" fill="none" stroke="#1e1a17" stroke-width="2" stroke-linecap="round"/>
                 <path d="M100 150 C86 146 78 134 80 122 C94 126 100 136 100 150 Z" fill="#c99a9c"/>
                 <path d="M101 128 C114 124 121 112 119 100 C106 104 100 114 101 128 Z" fill="#c99a9c" opacity="0.7"/>
@@ -69,20 +67,33 @@
                 <circle cx="100" cy="70" r="13" fill="#a2686c"/>
                 <path d="M58 186 L142 186" stroke="#1e1a17" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
               </svg>
+              <span class="tl-plus" aria-hidden="true">＋</span>
+            </button>
+
+            <div class="tl-body">
+              <span class="tl-num">01 / system</span>
+              <h2 class="tl-title">花店后台管理系统</h2>
+              <div class="tl-panel" id="tl-1">
+                <div>
+                  <p>给线下花店做的轻量后台：商品管理、库存监控、缺货提醒、订单处理。用 SQL 建了数据模型，做到下单自动扣库存、补货自动加回去。</p>
+                  <div class="tags"><span>需求梳理</span><span>数据库</span><span>交互设计</span></div>
+                  <div class="tl-links">
+                    <a class="go" href="project-flower.html">看完整详情 <span class="arr">↗</span></a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </a>
+          </article>
 
           <!-- 02 智能垃圾桶：垃圾桶机器人 -->
-          <a class="exp-row flip" href="project-bin.html" style="text-decoration:none; color:inherit;">
-            <div class="exp-text">
-              <span class="work-num">02 / hardware</span>
-              <h2>树莓派智能垃圾桶</h2>
-              <p>软硬件结合的小项目：识别、自动开盖、语音提示。反复调参数、跑测试，一点点把识别率往上推，也学会了怎么排查硬件的怪问题。</p>
-              <div class="tags"><span>硬件调试</span><span>参数调优</span><span>测试</span></div>
-              <span class="exp-go">看详情 <span class="arr">↗</span></span>
-            </div>
-            <div class="exp-art" aria-hidden="true">
-              <svg viewBox="0 0 200 200" role="img" aria-label="垃圾桶机器人">
+          <article class="tl-item">
+            <svg class="tl-seg" viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M100 -1 C 108 52, 92 148, 100 201" vector-effect="non-scaling-stroke" />
+            </svg>
+
+            <button class="tl-node" type="button" aria-expanded="false" aria-controls="tl-2"
+                    aria-label="展开「树莓派智能垃圾桶」的简介">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
                 <line x1="100" y1="34" x2="100" y2="52" stroke="#1e1a17" stroke-width="2"/>
                 <circle cx="100" cy="30" r="6" fill="#a2686c"/>
                 <g transform="rotate(-6 100 66)">
@@ -96,20 +107,33 @@
                 <rect x="80" y="146" width="40" height="6" rx="3" fill="#f4ede4" stroke="#1e1a17" stroke-width="1.4"/>
                 <ellipse cx="100" cy="172" rx="46" ry="8" fill="#1e1a17" opacity="0.08"/>
               </svg>
+              <span class="tl-plus" aria-hidden="true">＋</span>
+            </button>
+
+            <div class="tl-body">
+              <span class="tl-num">02 / hardware</span>
+              <h2 class="tl-title">树莓派智能垃圾桶</h2>
+              <div class="tl-panel" id="tl-2">
+                <div>
+                  <p>软硬件结合的小项目：识别、自动开盖、语音提示。反复调参数、跑测试，一点点把识别率往上推，也学会了怎么排查硬件的怪问题。</p>
+                  <div class="tags"><span>硬件调试</span><span>参数调优</span><span>测试</span></div>
+                  <div class="tl-links">
+                    <a class="go" href="project-bin.html">看完整详情 <span class="arr">↗</span></a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </a>
+          </article>
 
           <!-- 03 拾光箱：照片落进箱子 -->
-          <a class="exp-row" href="project-box.html" style="text-decoration:none; color:inherit;">
-            <div class="exp-text">
-              <span class="work-num">03 / miniapp</span>
-              <h2>拾光箱 · 小程序</h2>
-              <p>一个收藏日常的小程序：把照片和文字按时间线收进「拾光箱」，可以随时回看某一段日子。负责功能规划、页面结构与交互流程设计。</p>
-              <div class="tags"><span>微信小程序</span><span>功能规划</span><span>交互设计</span></div>
-              <span class="exp-go">看详情 <span class="arr">↗</span></span>
-            </div>
-            <div class="exp-art" aria-hidden="true">
-              <svg viewBox="0 0 200 200" role="img" aria-label="照片落进箱子">
+          <article class="tl-item">
+            <svg class="tl-seg" viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M100 -1 C 108 52, 92 148, 100 201" vector-effect="non-scaling-stroke" />
+            </svg>
+
+            <button class="tl-node" type="button" aria-expanded="false" aria-controls="tl-3"
+                    aria-label="展开「拾光箱」的简介">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
                 <g transform="rotate(7 108 56)">
                   <rect x="80" y="34" width="56" height="44" rx="4" fill="#fffdfa" stroke="#1e1a17" stroke-width="2"/>
                   <circle cx="96" cy="48" r="5" fill="#c99a9c"/>
@@ -122,12 +146,29 @@
                 <path d="M144 118 L160 104 L116 100 L100 112 Z" fill="#c99a9c" opacity="0.55"/>
                 <ellipse cx="100" cy="178" rx="48" ry="8" fill="#1e1a17" opacity="0.08"/>
               </svg>
+              <span class="tl-plus" aria-hidden="true">＋</span>
+            </button>
+
+            <div class="tl-body">
+              <span class="tl-num">03 / miniapp</span>
+              <h2 class="tl-title">拾光箱 · 小程序</h2>
+              <div class="tl-panel" id="tl-3">
+                <div>
+                  <p>一个收藏日常的小程序：把照片和文字按时间线收进「拾光箱」，可以随时回看某一段日子。负责功能规划、页面结构与交互流程设计。</p>
+                  <div class="tags"><span>微信小程序</span><span>功能规划</span><span>交互设计</span></div>
+                  <div class="tl-links">
+                    <a class="go" href="project-box.html">看完整详情 <span class="arr">↗</span></a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </a>
+
+            <span class="tl-end" aria-hidden="true">✦</span>
+          </article>
 
         </div>
 
-        <p class="sec-note" style="margin-top:26px;">
+        <p class="sec-note" style="margin-top:30px;">
           实习做的事搬去了 <a href="experience.html" style="color:var(--rose);">工作经历 →</a>
         </p>
 

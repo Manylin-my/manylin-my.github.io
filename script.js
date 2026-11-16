@@ -18,6 +18,42 @@ if (menuBtn && navLinks) {
   });
 }
 
+// 项目页：点圆圈（或标题）展开简介
+(function () {
+  var items = document.querySelectorAll('.tl-item');
+  if (!items.length) return;
+
+  Array.prototype.forEach.call(items, function (item) {
+    var node = item.querySelector('.tl-node');
+    var panel = item.querySelector('.tl-panel');
+    var title = item.querySelector('.tl-title');
+    if (!node || !panel) return;
+
+    function toggle() {
+      var open = item.classList.toggle('open');
+      node.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    node.addEventListener('click', function (e) {
+      e.stopPropagation();
+      toggle();
+    });
+
+    if (title) {
+      title.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggle();
+      });
+    }
+
+    // 整行也能点，但别拦掉文中的链接
+    item.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      toggle();
+    });
+  });
+})();
+
 // 微信一键复制
 var copyBtn = document.getElementById('copyWx');
 var hint = document.getElementById('copyHint');
