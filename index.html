@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>莫墁玉 · 产品经理求职中 | 个人主页</title>
-  <meta name="description" content="莫墁玉的个人主页：深圳职业技术大学计算机应用技术专业 2026 届毕业生，求职产品经理/产品助理岗位。B 端后台管理系统、智能硬件项目经验。" />
+  <meta name="description" content="莫墁玉的个人主页：深圳职业技术大学计算机应用技术专业 2026 届毕业生，求职产品经理 / 产品助理，同时关注 SEO 与海外增长方向。具备 B 端后台管理系统、智能硬件项目与海外红人营销实习经验。" />
   <meta name="author" content="莫墁玉" />
   <meta property="og:title" content="莫墁玉 · 个人主页" />
   <meta property="og:description" content="计算机背景的产品经理求职者，会写 PRD、能画原型、懂数据分析。" />
@@ -168,6 +168,15 @@
       transition: transform 0.2s;
     }
     .contact-links a:hover, .contact-links a:focus-visible { transform: translateY(-2px); }
+    /* 微信复制按钮：与链接保持一致的视觉，但用 button 保证可访问性 */
+    .copy-wx {
+      background: rgba(255, 255, 255, 0.85); color: var(--ink);
+      padding: 11px 22px; border-radius: 999px; border: none; cursor: pointer;
+      font-family: inherit; font-size: 1rem; font-weight: 700;
+      transition: transform 0.2s;
+    }
+    .copy-wx:hover, .copy-wx:focus-visible { transform: translateY(-2px); }
+    .wx-tip { margin-top: 16px; font-size: 0.85rem; color: #3c4160; opacity: 0.8; }
 
     footer { text-align: center; color: var(--ink-soft); font-size: 0.85rem; padding: 32px 0 40px; }
 
@@ -205,8 +214,8 @@
     <span class="hero-badge">🎓 2026 届 · 计算机应用技术</span>
     <h1>你好，我是<span class="hl">莫墁玉</span><br />一个会写 PRD、能画原型、懂数据的准产品经理</h1>
     <p class="sub">
-      深圳职业技术大学 2026 年 7 月毕业，目标岗位：<strong>产品经理 / 产品助理</strong>。
-      有 B 端后台管理系统、智能硬件项目经验，也做过亚马逊推广助理实习。
+      深圳职业技术大学 2026 年 7 月毕业，目标岗位：<strong>产品经理 / 产品助理</strong>，同时关注 SEO / 海外增长方向。
+      有 B 端后台管理系统、智能硬件项目经验，也做过海外红人营销实习。
       如果你正在招人，欢迎看看我的作品集 👀
     </p>
     <div class="hero-cta">
@@ -332,10 +341,11 @@
       <h2>📮 一起聊聊？</h2>
       <p>我正在寻找产品经理 / 产品助理的机会，期待你的消息！</p>
       <div class="contact-links">
-        <a href="mailto:your-email@example.com">✉️ 邮件联系</a>
-        <a href="#" title="请在部署前替换为你的简历文件链接">📄 下载简历</a>
-        <a href="#" title="请在部署前替换为你的微信/电话信息">💬 微信联系</a>
+        <a href="mailto:2423677336@qq.com">✉️ 2423677336@qq.com</a>
+        <a href="mailto:2423677336@qq.com?subject=%E5%B8%8C%E6%9C%9B%E8%8E%B7%E5%8F%96%E6%82%A8%E7%9A%84%E7%AE%80%E5%8E%86">📄 索取简历</a>
+        <button type="button" class="copy-wx" id="copyWx" data-wx="mo13728562801">💬 微信：mo13728562801</button>
       </div>
+      <p class="wx-tip" id="wxTip" role="status" aria-live="polite">点击微信可一键复制，加好友时注明来意 🙂</p>
     </div>
   </section>
 
@@ -359,6 +369,33 @@
           navLinks.classList.remove('open');
           menuBtn.setAttribute('aria-expanded', 'false');
           menuBtn.textContent = '☰';
+        }
+      });
+    }
+  </script>
+  <script>
+    // 微信一键复制：优先使用 Clipboard API，失败时回退到 execCommand
+    var copyWx = document.getElementById('copyWx');
+    var wxTip = document.getElementById('wxTip');
+    if (copyWx && wxTip) {
+      copyWx.addEventListener('click', function () {
+        var wx = copyWx.dataset.wx;
+        function done() { wxTip.textContent = '✅ 微信号已复制：' + wx; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(wx).then(done).catch(fallback);
+        } else {
+          fallback();
+        }
+        function fallback() {
+          var ta = document.createElement('textarea');
+          ta.value = wx;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); done(); } catch (e) { wxTip.textContent = '微信号：' + wx + '（请手动复制）'; }
+          document.body.removeChild(ta);
         }
       });
     }
