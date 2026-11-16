@@ -206,65 +206,53 @@ p.lead {
   font-size: 0.76rem; letter-spacing: 0.06em; color: var(--ink-45); margin-top: 6px;
 }
 
-/* ---------- 项目页：一条线串起来的项目节点 ---------- */
-.tl { position: relative; margin-top: 6px; }
-.tl-item {
-  position: relative;
-  display: grid; grid-template-columns: 1fr 230px 1fr;
-  align-items: center; padding: 46px 0;
-}
-/* 每行自带一段蜿蜒的虚线，上下相接就是一条连续的线 */
-.tl-seg {
+/* ---------- 项目页：一条手绘虚线串起图标 ---------- */
+.tl { position: relative; margin-top: 10px; }
+
+/* 整条线是一层 SVG，路径由 script.js 按图标真实位置生成 */
+.tl-line {
   position: absolute; inset: 0; width: 100%; height: 100%;
   pointer-events: none; z-index: 0; overflow: visible;
 }
-.tl-seg path {
-  fill: none; stroke: rgba(30, 26, 23, 0.26); stroke-width: 1.2;
-  stroke-dasharray: 3 7; stroke-linecap: round;
-}
-/* 每段用同一条 S 曲线，接口处切线一致，连起来就是一条平滑的线 */
-/* 线尾的小星，收住整条线 */
-.tl-end {
-  position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%);
-  z-index: 1; color: var(--rose-soft); font-size: 0.95rem; line-height: 1;
-  background: var(--cream); padding: 2px 0;
+.tl-thread {
+  fill: none; stroke: rgba(30, 26, 23, 0.26); stroke-width: 1.3;
+  stroke-dasharray: 4 9; stroke-linecap: round;
 }
 
-/* 节点：不骑线了，就放在项目标题上方，离线远远的 */
+.tl-item {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 190px 1fr;
+  align-items: start; padding: 40px 0;
+}
+.tl-body { grid-row: 1; max-width: 38ch; }
+.tl-item:nth-of-type(odd) .tl-body { grid-column: 1; justify-self: end; }
+.tl-item:nth-of-type(even) .tl-body { grid-column: 3; justify-self: start; }
+
+/* 图标：手绘涂鸦，没有边框也没有底色，线直接从它背后穿过 */
 .tl-node {
   position: relative; z-index: 2;
-  width: 112px; height: 112px; border-radius: 50%;
-  background: var(--card); border: 1px solid var(--line);
+  width: 96px; height: 96px; padding: 0; margin: 0 0 12px;
+  border: 0; background: none; border-radius: 0;
   display: grid; place-items: center; cursor: pointer;
-  font-family: inherit; padding: 0; margin: 0 0 18px;
-  box-shadow: 0 8px 22px rgba(88, 62, 45, 0.07);
-  transition: transform 0.3s cubic-bezier(0.3, 0.8, 0.3, 1), box-shadow 0.3s, border-color 0.3s, background 0.3s;
+  font-family: inherit; box-shadow: none;
+  transition: transform 0.3s cubic-bezier(0.3, 0.8, 0.3, 1);
 }
-.tl-node svg { width: 82px; height: 82px; display: block; }
-.tl-node:hover, .tl-node:focus-visible {
-  transform: translateY(-4px) scale(1.035);
-  border-color: rgba(162, 104, 108, 0.42);
-  box-shadow: 0 16px 34px rgba(88, 62, 45, 0.13);
-}
-.tl-item.open .tl-node { background: #fdf1ee; border-color: rgba(162, 104, 108, 0.45); }
+.tl-node svg { width: 94px; height: 94px; display: block; }
+.tl-node:hover, .tl-node:focus-visible { transform: translateY(-3px) rotate(-3deg) scale(1.05); }
 .tl-plus {
-  position: absolute; right: 0; bottom: 2px;
-  width: 28px; height: 28px; border-radius: 50%;
-  background: var(--rose); color: #fff9f5;
-  display: grid; place-items: center;
-  font-size: 0.9rem; line-height: 1;
-  box-shadow: 0 5px 12px rgba(162, 104, 108, 0.32);
-  transition: transform 0.35s cubic-bezier(0.3, 0.8, 0.3, 1);
+  position: absolute; right: -6px; bottom: 4px;
+  font-family: var(--sans); font-size: 0.95rem; line-height: 1;
+  color: var(--rose); opacity: 0.6;
+  transition: transform 0.35s cubic-bezier(0.3, 0.8, 0.3, 1), opacity 0.25s;
 }
-.tl-item.open .tl-plus { transform: rotate(135deg); }
+.tl-node:hover .tl-plus { opacity: 1; }
+.tl-item.open .tl-plus { transform: rotate(135deg); opacity: 1; }
 
-/* 文字块：左右交替，圆圈叠在标题上方 */
-.tl-body { grid-row: 1; max-width: 46ch; }
-.tl-item:nth-child(odd) .tl-body { grid-column: 1; justify-self: end; padding-right: 6px; }
-.tl-item:nth-child(even) .tl-body { grid-column: 3; justify-self: start; padding-left: 6px; }
+/* 文字：在图标下方，左右交替 */
 .tl-num {
+  display: block;
   font-family: var(--serif); font-style: italic; font-size: 0.82rem;
-  color: var(--rose-soft); letter-spacing: 0.02em;
+  color: var(--rose-soft); letter-spacing: 0.02em; margin-top: 4px;
 }
 .tl-title {
   font-family: var(--serif); font-weight: 400;
@@ -304,25 +292,21 @@ p.lead {
   .section-title-row { flex-direction: column; align-items: flex-start; gap: 10px; }
   .sec-note { font-size: 0.92rem; }
 
-  .tl-seg { display: none; }
-  .tl-item { display: block; padding: 30px 0; }
-  .tl-item::before {
-    content: ""; position: absolute; left: 32px; top: 0; bottom: 0;
-    border-left: 1px dashed rgba(30, 26, 23, 0.2);
+  /* 单列：图标仍在标题上方，线自然变成一条竖直的虚线 */
+  .tl-item { display: block; padding: 26px 0; }
+  .tl-body { max-width: none; }
+  .tl-item:nth-of-type(odd) .tl-body,
+  .tl-item:nth-of-type(even) .tl-body { grid-column: auto; justify-self: stretch; }
+  /* 图标做左侧轨道上的节点，文字排在右边，线就不会压在标题上 */
+  .tl-body {
+    display: grid; grid-template-columns: 78px 1fr; column-gap: 16px;
+    align-items: start;
   }
-  .tl-item:last-child .tl-end { left: 32px; bottom: 2px; background: var(--cream); }
-  .tl-node {
-    position: absolute; left: 0; top: 30px; margin: 0;
-    width: 66px; height: 66px;
-  }
-  .tl-node svg { width: 48px; height: 48px; }
-  .tl-plus { width: 22px; height: 22px; font-size: 0.78rem; right: -3px; bottom: -1px; }
-  .tl-body { max-width: none; padding: 0 0 0 88px; }
-  .tl-item:nth-child(odd) .tl-body,
-  .tl-item:nth-child(even) .tl-body {
-    grid-column: auto; justify-self: stretch; padding: 0 0 0 88px;
-  }
+  .tl-node { grid-column: 1; grid-row: 1 / span 3; width: 78px; height: 78px; margin: 0; }
+  .tl-node svg { width: 76px; height: 76px; }
+  .tl-num, .tl-title, .tl-panel { grid-column: 2; }
   .tl-title { font-size: 1.25rem; }
+  .tl-plus { right: -4px; bottom: 2px; }
 }
 
 /* ---------- 项目详情页 ---------- */
