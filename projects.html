@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>项目 · Maylin's blog</title>
+  <meta name="description" content="Maylin 做过的项目：花店后台管理系统、树莓派智能垃圾桶、海外红人营销。" />
+  <meta name="author" content="Maylin" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page">
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Maylin <span class="star">✦</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a class="active" href="projects.html">项目</a></li>
+        <li><a href="posts.html">文章</a></li>
+        <li><a href="about.html">关于我和本站</a></li>
+        <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell">
+      <div class="wrap">
+        <div class="section-title-row">
+          <h1 class="sec-title"><span class="star">✦</span> 项目</h1>
+          <p class="sec-note">从想法到能跑起来</p>
+        </div>
+        <div class="rule"></div>
+
+        <div class="work-grid">
+          <article class="work-card">
+            <span class="work-num">01 / system</span>
+            <h3>花店后台管理系统</h3>
+            <p>给线下花店做的轻量后台：商品管理、库存监控、缺货提醒、订单处理。用 SQL 建了数据模型，做到下单自动扣库存、补货自动加回去。</p>
+            <div class="tags"><span>需求梳理</span><span>数据库</span><span>交互设计</span></div>
+          </article>
+
+          <article class="work-card">
+            <span class="work-num">02 / hardware</span>
+            <h3>树莓派智能垃圾桶</h3>
+            <p>软硬件结合的小项目：识别、自动开盖、语音提示。反复调参数、跑测试，一点点把识别率往上推，也学会了怎么排查硬件的怪问题。</p>
+            <div class="tags"><span>硬件调试</span><span>参数调优</span><span>测试</span></div>
+          </article>
+
+          <article class="work-card">
+            <span class="work-num">03 / marketing</span>
+            <h3>海外红人营销</h3>
+            <p>实习期间做的事：按粉丝量、互动率、账号调性筛选合作达人，跟进内容与上线节点，用对照测试判断到底哪种内容更有效。</p>
+            <div class="tags"><span>内容筛选</span><span>A/B 测试</span><span>数据复盘</span></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap foot-inner">
+      <span class="f-brand">Maylin ✦</span>
+      <nav class="foot-nav" aria-label="页脚导航">
+        <a href="index.html">首页</a>
+        <a href="projects.html">项目</a>
+        <a href="posts.html">文章</a>
+        <a href="about.html">关于</a>
+      </nav>
+      <span>© 2026 · 慢慢改出来的一个小站</span>
+    </div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

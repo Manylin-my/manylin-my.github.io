@@ -3,605 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Maylin's blog ✦ 关于一些事</title>
-  <meta name="description" content="Maylin's blog：记录做过的项目、正在学的东西，和一些零零碎碎的想法。" />
+  <title>Maylin's blog ✦ 首页</title>
+  <meta name="description" content="欢迎来到 Maylin 的博客：记录做过的项目、正在学的东西，和一些零零碎碎的想法。" />
   <meta name="author" content="Maylin" />
-  <meta property="og:title" content="Maylin's blog ✦ 关于一些事" />
+  <meta property="og:title" content="Maylin's blog" />
   <meta property="og:description" content="记录做过的项目、正在学的东西，和一些零零碎碎的想法。" />
   <meta property="og:type" content="website" />
-  <style>
-    /* ============================================================
-       设计基调：暖米色 · 衬线大标题 · 玫瑰灰点缀 · 手绘装饰
-       （参考图风格：编辑部感的个人主页）
-       ============================================================ */
-    :root {
-      --cream: #faf6f0;       /* 主背景 */
-      --cream-2: #f4ede4;     /* 次级背景 */
-      --card: #fffdfa;        /* 卡片 */
-      --ink: #1e1a17;         /* 主文字 */
-      --ink-70: rgba(30, 26, 23, 0.7);
-      --ink-45: rgba(30, 26, 23, 0.45);
-      --rose: #a2686c;        /* 玫瑰灰主色 */
-      --rose-soft: #c99a9c;
-      --line: rgba(30, 26, 23, 0.12);
-      --serif: Georgia, "Times New Roman", "Songti SC", "STSong", "SimSun", serif;
-      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      --r-lg: 20px;
-      --r-sm: 12px;
-      --shadow: 0 10px 30px rgba(88, 62, 45, 0.07);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: var(--sans);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    /* 细微的纸张颗粒感（纯 CSS，不加载图片） */
-    body::before {
-      content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      opacity: 0.5;
-      background-image: radial-gradient(rgba(120, 90, 70, 0.06) 1px, transparent 1px);
-      background-size: 4px 4px;
-    }
-    .page { position: relative; z-index: 1; }
-
-    /* ---------- 导航 ---------- */
-    header.nav {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(250, 246, 240, 0.86);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-inner {
-      max-width: 1180px; margin: 0 auto; padding: 18px 32px;
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    }
-    .brand {
-      font-family: var(--serif); font-size: 1.35rem; letter-spacing: -0.01em;
-      color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-    }
-    .brand .star { color: var(--rose); font-size: 0.9rem; }
-    .nav-links { display: flex; align-items: center; gap: 30px; list-style: none; }
-    .nav-links a {
-      color: var(--ink-70); text-decoration: none; font-size: 0.92rem;
-      letter-spacing: 0.01em; transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links a:focus-visible { color: var(--ink); }
-    .nav-cta {
-      background: var(--rose); color: #fff9f5 !important; text-decoration: none;
-      padding: 10px 22px; border-radius: 999px; font-size: 0.9rem;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .nav-cta:hover { background: #8f5a5e; transform: translateY(-1px); }
-    .menu-btn {
-      display: none; background: none; border: 1px solid var(--line);
-      border-radius: 999px; padding: 7px 14px; font-size: 0.95rem;
-      color: var(--ink); cursor: pointer;
-    }
-    @media (max-width: 860px) {
-      .menu-btn { display: block; }
-      .nav-links {
-        position: absolute; top: 100%; left: 0; right: 0; flex-direction: column;
-        align-items: flex-start; gap: 0; background: var(--card);
-        border-bottom: 1px solid var(--line); padding: 8px 32px 20px; display: none;
-      }
-      .nav-links.open { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a { display: block; padding: 12px 0; border-bottom: 1px solid var(--line); }
-      .nav-links li:last-child a { border-bottom: none; margin-top: 12px; text-align: center; }
-    }
-
-    /* ---------- 通用排版 ---------- */
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
-    .eyebrow {
-      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--ink-45); display: inline-flex; align-items: center; gap: 8px;
-    }
-    .eyebrow .arrow { color: var(--rose); letter-spacing: 0; font-size: 1rem; }
-    .display {
-      font-family: var(--serif); font-weight: 400;
-      font-size: clamp(3rem, 7.4vw, 5.6rem);
-      line-height: 0.94; letter-spacing: -0.025em;
-      margin: 22px 0 0;
-    }
-    .display span { display: block; }
-    .display .italic { font-style: italic; color: var(--rose); }
-    .italic-line {
-      font-family: var(--serif); font-style: italic; color: var(--rose);
-      font-size: clamp(1.05rem, 2vw, 1.4rem); margin-top: 26px;
-      display: inline-flex; align-items: center; gap: 10px;
-    }
-    .italic-line::before { content: "→"; font-style: normal; color: var(--ink-45); }
-    p.lead {
-      margin-top: 22px; max-width: 46ch;
-      font-size: 0.98rem; line-height: 1.95; color: var(--ink-70);
-    }
-    .section { padding: 96px 0 0; }
-    .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-    .sec-title {
-      font-family: var(--serif); font-weight: 400; font-size: clamp(1.9rem, 3.4vw, 2.7rem);
-      letter-spacing: -0.02em; display: flex; align-items: center; gap: 14px;
-    }
-    .sec-title .star { color: var(--rose); font-size: 0.6em; }
-    .sec-note { font-family: var(--serif); font-style: italic; color: var(--ink-45); font-size: 1rem; }
-    .rule { height: 1px; background: var(--line); margin: 26px 0 0; }
-
-    /* ---------- Hero ---------- */
-    .hero { padding: 76px 0 0; }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 60px; align-items: center; }
-    .pills { list-style: none; display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
-    .pills li {
-      background: rgba(30, 26, 23, 0.055); color: var(--ink-70);
-      font-size: 0.82rem; padding: 7px 15px; border-radius: 999px;
-      border: 1px solid rgba(30, 26, 23, 0.04);
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 14px 26px; border-radius: 999px; text-decoration: none;
-      font-size: 0.92rem; transition: transform 0.2s, background 0.2s, color 0.2s;
-      border: 1px solid var(--ink);
-    }
-    .btn-dark { background: var(--ink); color: #fbf7f2; }
-    .btn-dark:hover { transform: translateY(-2px); background: #322b26; }
-    .btn-outline { background: transparent; color: var(--ink); }
-    .btn-outline:hover { transform: translateY(-2px); background: rgba(30, 26, 23, 0.05); }
-    .btn-rose { background: var(--rose); border-color: var(--rose); color: #fff9f5; }
-    .btn-rose:hover { background: #8f5a5e; transform: translateY(-2px); }
-
-    /* 右侧「名片」：格纸底 + 轻微倾斜 + 手绘标注 */
-    .card-stage { position: relative; }
-    .me-card {
-      position: relative; transform: rotate(-2deg);
-      background:
-        repeating-linear-gradient(to right, rgba(163, 128, 96, 0.16) 0 1px, transparent 1px 34px),
-        repeating-linear-gradient(to bottom, rgba(163, 128, 96, 0.16) 0 1px, transparent 1px 34px),
-        #f6ecdc;
-      border-radius: 6px; padding: 46px 30px 34px;
-      box-shadow: 0 22px 44px rgba(120, 84, 58, 0.14);
-      text-align: center;
-    }
-    .me-card .mono {
-      width: 96px; height: 96px; margin: 0 auto 18px; border-radius: 50%;
-      background: #fffdfa; border: 1px solid rgba(163, 128, 96, 0.3);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--serif); font-style: italic; font-size: 2.2rem; color: var(--rose);
-    }
-    .me-card h2 {
-      font-family: var(--serif); font-weight: 400; font-size: 2rem;
-      letter-spacing: -0.01em; line-height: 1.1;
-    }
-    .me-card h2 em { font-style: italic; color: var(--rose); }
-    .me-card .sub {
-      margin-top: 10px; font-size: 0.82rem; letter-spacing: 0.06em; color: rgba(90, 68, 52, 0.7);
-    }
-    .me-card .note {
-      margin-top: 22px; background: #fffdfa; border-radius: 999px;
-      padding: 12px 20px; font-family: var(--serif); font-style: italic;
-      font-size: 0.92rem; color: #5a4434; box-shadow: 0 6px 14px rgba(120, 84, 58, 0.08);
-    }
-    /* 浮在外面的小贴纸 */
-    .sticker {
-      position: absolute; z-index: 3; background: #fffdfa;
-      border: 1px solid rgba(163, 128, 96, 0.22);
-      border-radius: 999px; padding: 7px 15px;
-      font-size: 0.76rem; color: #5a4434;
-      box-shadow: 0 8px 18px rgba(120, 84, 58, 0.12);
-      white-space: nowrap;
-    }
-    .sticker.a { top: -14px; left: -6px; transform: rotate(-5deg); }
-    .sticker.b { top: -18px; right: 12px; transform: rotate(3deg); }
-    .sticker.c { bottom: -14px; right: -4px; transform: rotate(-3deg); }
-    .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #6fbf9a; margin-right: 6px; vertical-align: 1px; }
-    /* 手绘标注 */
-    .annot {
-      position: absolute; font-family: var(--serif); font-style: italic;
-      font-size: 0.82rem; color: #7a5b45; z-index: 3; white-space: nowrap;
-    }
-    .annot.l1 { left: -46px; top: 34%; }
-    .annot.l2 { right: -40px; top: 52%; }
-    .annot.l3 { left: -30px; bottom: 16%; }
-
-    /* ---------- 项目 ---------- */
-    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 42px; }
-    @media (max-width: 980px) { .work-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 660px) { .work-grid { grid-template-columns: 1fr; } }
-    .work-card {
-      background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
-      padding: 28px 26px 26px; display: flex; flex-direction: column;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-    }
-    .work-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: rgba(162, 104, 108, 0.35); }
-    .work-num {
-      font-family: var(--serif); font-style: italic; font-size: 0.9rem;
-      color: var(--rose-soft); letter-spacing: 0.04em;
-    }
-    .work-card h3 {
-      font-family: var(--serif); font-weight: 400; font-size: 1.34rem;
-      letter-spacing: -0.01em; margin: 8px 0 12px; line-height: 1.35;
-    }
-    .work-card p { font-size: 0.9rem; line-height: 1.85; color: var(--ink-70); flex: 1; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
-    .tags span {
-      font-size: 0.72rem; color: var(--rose); background: rgba(162, 104, 108, 0.09);
-      padding: 5px 11px; border-radius: 999px;
-    }
-
-    /* ---------- Life：卡片列表 ---------- */
-    .life-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; margin-top: 42px; }
-    @media (max-width: 860px) { .life-grid { grid-template-columns: 1fr; } }
-    .panel {
-      background: var(--card); border: 1px solid var(--line);
-      border-radius: var(--r-lg); padding: 30px 30px 26px;
-    }
-    .panel-label {
-      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--ink-45); display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
-    }
-    .panel-label .arrow { color: var(--rose); letter-spacing: 0; font-size: 1rem; }
-    .fact-list { list-style: none; display: grid; gap: 14px; }
-    .fact-list li {
-      display: flex; gap: 12px; font-size: 0.93rem; line-height: 1.7; color: var(--ink-70);
-    }
-    .fact-list li .mark { color: var(--rose); flex-shrink: 0; font-size: 0.8rem; margin-top: 3px; }
-    .timeline-simple { list-style: none; display: grid; gap: 22px; }
-    .timeline-simple li { border-left: 1px solid var(--line); padding-left: 18px; position: relative; }
-    .timeline-simple li::before {
-      content: ""; position: absolute; left: -4px; top: 8px;
-      width: 7px; height: 7px; border-radius: 50%; background: var(--rose-soft);
-    }
-    .timeline-simple h4 { font-size: 0.96rem; font-weight: 600; letter-spacing: 0.01em; }
-    .timeline-simple .when { font-size: 0.76rem; letter-spacing: 0.1em; color: var(--ink-45); margin: 3px 0 6px; text-transform: uppercase; }
-    .timeline-simple p { font-size: 0.88rem; line-height: 1.75; color: var(--ink-70); }
-
-    /* ---------- Contact ---------- */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 42px; }
-    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
-    .hello-card {
-      position: relative; overflow: hidden;
-      background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg);
-      padding: 38px 34px 32px;
-    }
-    .hello-card h3 {
-      font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 2rem);
-      line-height: 1.3; letter-spacing: -0.01em;
-    }
-    .hello-card h3 em { font-style: italic; color: var(--rose); display: block; }
-    .hello-card > p { margin-top: 14px; font-size: 0.92rem; line-height: 1.85; color: var(--ink-70); max-width: 40ch; }
-    .hello-card .sparkle-big {
-      position: absolute; right: 26px; top: 26px; width: 62px; height: 62px;
-      color: rgba(162, 104, 108, 0.13); pointer-events: none;
-    }
-    .row-list { list-style: none; display: grid; gap: 10px; margin: 26px 0 24px; }
-    .row {
-      display: flex; align-items: center; gap: 14px;
-      border: 1px solid var(--line); border-radius: var(--r-sm);
-      padding: 12px 16px; background: rgba(250, 246, 240, 0.6);
-      text-decoration: none; color: var(--ink); width: 100%; text-align: left;
-      font-family: inherit; font-size: 0.95rem; cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .row:hover, .row:focus-visible { border-color: rgba(162, 104, 108, 0.5); background: #fffdfa; }
-    .row .icon {
-      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-      background: rgba(162, 104, 108, 0.1); color: var(--rose);
-      display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
-    }
-    .row .text { display: flex; flex-direction: column; gap: 1px; overflow: hidden; }
-    .row .label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-45); }
-    .row .value { font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .copy-hint { font-size: 0.78rem; color: var(--ink-45); margin-top: 4px; }
-
-    .side-stack { display: grid; gap: 22px; align-content: start; }
-    .status-card {
-      background: rgba(162, 104, 108, 0.055); border: 1px solid rgba(162, 104, 108, 0.18);
-      border-radius: var(--r-lg); padding: 24px 28px;
-    }
-    .status-card .status-top { display: flex; align-items: center; gap: 8px; font-family: var(--serif); font-style: italic; color: #7a5b45; font-size: 0.88rem; }
-    .status-card p { margin-top: 8px; font-size: 0.88rem; line-height: 1.75; color: var(--ink-70); }
-
-    /* ---------- Footer ---------- */
-    footer {
-      margin-top: 96px; border-top: 1px solid var(--line); padding: 30px 0 44px;
-      display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
-      font-size: 0.8rem; color: var(--ink-45);
-    }
-    footer .f-brand { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink-70); }
-
-    /* ---------- 焦点与动效偏好 ---------- */
-    a:focus-visible, button:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; border-radius: 4px; }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { transition: none !important; animation: none !important; }
-    }
-
-    /* ---------- 小屏微调 ---------- */
-    @media (max-width: 860px) {
-      .wrap, .nav-inner { padding: 0 20px; }
-      .nav-inner { padding: 14px 20px; }
-      .hero { padding-top: 44px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 56px; }
-      .card-stage { max-width: 420px; margin: 0 auto; }
-      .annot.l1, .annot.l2, .annot.l3 { display: none; }
-      .section { padding-top: 72px; }
-      footer { margin-top: 72px; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <div class="page">
 
-  <!-- ===================== 导航 ===================== -->
+  <!-- ===================== 导航（四个页面共用结构） ===================== -->
   <header class="nav">
     <div class="nav-inner">
-      <a class="brand" href="#top">Maylin <span class="star">✦</span></a>
+      <a class="brand" href="index.html">Maylin <span class="star">✦</span></a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#hello">Hello</a></li>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#life">Life</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a class="nav-cta" href="#contact">Say Hello</a></li>
+        <li><a class="active" href="index.html">首页</a></li>
+        <li><a href="projects.html">项目</a></li>
+        <li><a href="posts.html">文章</a></li>
+        <li><a href="about.html">关于我和本站</a></li>
+        <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
       </ul>
     </div>
   </header>
 
-  <!-- ===================== 首屏 ===================== -->
-  <section class="hero" id="top">
-    <div class="wrap">
-      <div class="hero-grid">
-        <div>
-          <p class="eyebrow"><span class="arrow">↳</span> hi, i'm Maylin</p>
+  <main>
+    <!-- ===================== 首屏：欢迎来到 Maylin 的博客 ===================== -->
+    <div class="shell">
+      <div class="wrap">
+        <div class="hero-grid" style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;">
+          <div>
+            <p class="eyebrow"><span class="arrow">↳</span> welcome</p>
 
-          <h1 class="display">
-            <span>Maylin's</span>
-            <span class="italic">blog,</span>
-            <span>about things.</span>
-          </h1>
+            <h1 class="display">
+              <span>Welcome</span>
+              <span class="italic">to Maylin's</span>
+              <span>blog.</span>
+            </h1>
 
-          <p class="italic-line">a place for what i made &amp; noticed</p>
+            <p class="italic-line">关于一些事 · 一些做过的东西</p>
 
-          <p class="lead">
-            我是 Maylin，学计算机的学生，在深圳。
-            喜欢把脑子里的想法做成能真正跑起来的东西——一个后台系统、一台会自己开盖的垃圾桶、一个改了又改的小网站。
-            做事的习惯是：先把「为什么」想清楚，再动手；做完回头看数据。
-          </p>
+            <p class="lead">
+              我是 Maylin，学计算机的学生，在深圳。
+              这里放着我的项目、正在学的东西，还有一些零零碎碎的想法。
+              做事的习惯是：先把「为什么」想清楚，再动手；做完回头看数据。
+            </p>
 
-          <ul class="pills">
-            <li>计算机应用技术</li>
-            <li>B 端系统</li>
-            <li>智能硬件</li>
-            <li>数据分析</li>
-            <li>海外营销实习</li>
-          </ul>
-
-          <div class="actions">
-            <a class="btn btn-dark" href="#work">See what I've built <span aria-hidden="true">→</span></a>
-            <a class="btn btn-outline" href="#life">My world <span aria-hidden="true">✦</span></a>
-          </div>
-        </div>
-
-        <!-- 右侧名片：想换成真人照片的话，把 .mono 换成 <img src="photo.jpg" width="96" height="96" alt="Maylin"> 即可 -->
-        <div class="card-stage">
-          <div class="annot l1">学计算机的 ↗</div>
-          <div class="annot l2">↖ 爱折腾硬件</div>
-          <div class="annot l3">喜欢把流程画成图 ↗</div>
-
-          <span class="sticker a">✓ that's me!</span>
-          <span class="sticker b"><span class="dot"></span>在深圳 · 慢热型</span>
-          <span class="sticker c">开工前先画图 ✦</span>
-
-          <div class="me-card">
-            <div class="mono">M</div>
-            <h2>Meet<br /><em>Maylin</em></h2>
-            <p class="sub">builder · learner · note-taker</p>
-            <p class="note">"make it work, then make it clear"</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== 项目 ===================== -->
-  <section class="section" id="work">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="sec-title"><span class="star">✦</span> Work</h2>
-        <p class="sec-note">从想法到能跑起来</p>
-      </div>
-      <div class="rule"></div>
-
-      <div class="work-grid">
-        <article class="work-card">
-          <span class="work-num">01 / system</span>
-          <h3>花店后台管理系统</h3>
-          <p>给线下花店做的轻量后台：商品管理、库存监控、缺货提醒、订单处理。用 SQL 建了数据模型，做到下单自动扣库存、补货自动加回去。</p>
-          <div class="tags"><span>需求梳理</span><span>数据库</span><span>交互设计</span></div>
-        </article>
-
-        <article class="work-card">
-          <span class="work-num">02 / hardware</span>
-          <h3>树莓派智能垃圾桶</h3>
-          <p>软硬件结合的小项目：识别、自动开盖、语音提示。反复调参数、跑测试，一点点把识别率往上推，也学会了怎么排查硬件的怪问题。</p>
-          <div class="tags"><span>硬件调试</span><span>参数调优</span><span>测试</span></div>
-        </article>
-
-        <article class="work-card">
-          <span class="work-num">03 / marketing</span>
-          <h3>海外红人营销</h3>
-          <p>实习期间做的事：按粉丝量、互动率、账号调性筛选合作达人，跟进内容与上线节点，用对照测试判断到底哪种内容更有效。</p>
-          <div class="tags"><span>内容筛选</span><span>A/B 测试</span><span>数据复盘</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== Life ===================== -->
-  <section class="section" id="life">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="sec-title"><span class="star">✦</span> Life</h2>
-        <p class="sec-note">一些零零碎碎</p>
-      </div>
-      <div class="rule"></div>
-
-      <div class="life-grid">
-        <!-- 时间线：内容可自行替换 -->
-        <div class="panel">
-          <p class="panel-label"><span class="arrow">↳</span> 最近与从前</p>
-          <ul class="timeline-simple">
-            <li>
-              <h4>海外红人营销实习</h4>
-              <p class="when">2026.03 — 2026.06</p>
-              <p>和海外博主对接、跟进合作节点，搭建项目台账，顺带学会了怎么用数据说服别人。</p>
-            </li>
-            <li>
-              <h4>花店后台系统 · 智能垃圾桶</h4>
-              <p class="when">在校项目</p>
-              <p>一个偏软件，一个偏硬件。共同点是都没有标准答案，都得自己把问题拆开。</p>
-            </li>
-            <li>
-              <h4>深圳职业技术大学 · 计算机应用技术</h4>
-              <p class="when">2023.09 — 2026.07</p>
-              <p>数据库、动态网页、数据分析、App 设计……学的都是从「能用」出发的东西。</p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- 小事清单：可自由增删 -->
-        <div class="panel">
-          <p class="panel-label"><span class="arrow">↳</span> 关于我的一些小事</p>
-          <ul class="fact-list">
-            <li><span class="mark">✦</span><span>写文档前会先画流程图，不画完不太敢开始写。</span></li>
-            <li><span class="mark">✦</span><span>喜欢表格和清单，Excel 透视表用得比 PPT 熟。</span></li>
-            <li><span class="mark">✦</span><span>会一点 HTML / CSS，这个小站是自己一行行改出来的。</span></li>
-            <li><span class="mark">✦</span><span>遇到问题时第一反应是「能不能拆成更小的步骤」。</span></li>
-            <li><span class="mark">✦</span><span>正在慢慢学 SEO 和数据分析，边学边往这个站上加东西。</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== Contact ===================== -->
-  <section class="section" id="contact">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 class="sec-title"><span class="star">✦</span> Say Hello</h2>
-        <p class="sec-note">i love meeting new people</p>
-      </div>
-      <div class="rule"></div>
-
-      <div class="contact-grid">
-        <div class="hello-card">
-          <svg class="sparkle-big" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4L12 0z"/>
-          </svg>
-          <h3>Building something?<em>or just want to chat?</em></h3>
-          <p>想聊技术、聊设计、聊做过的小项目，或者只是想打个招呼，都欢迎。</p>
-
-          <ul class="row-list">
-            <li>
-              <a class="row" href="mailto:2423677336@qq.com">
-                <span class="icon" aria-hidden="true">✉</span>
-                <span class="text">
-                  <span class="label">Email</span>
-                  <span class="value">2423677336@qq.com</span>
-                </span>
-              </a>
-            </li>
-            <li>
-              <button class="row" type="button" id="copyWx" data-wx="mo13728562801">
-                <span class="icon" aria-hidden="true">✆</span>
-                <span class="text">
-                  <span class="label">WeChat</span>
-                  <span class="value">mo13728562801</span>
-                </span>
-              </button>
-            </li>
-          </ul>
-
-          <a class="btn btn-rose" href="mailto:2423677336@qq.com">Say hello <span aria-hidden="true">→</span></a>
-          <p class="copy-hint" id="copyHint" role="status" aria-live="polite">点微信那一栏可以直接复制微信号。</p>
-        </div>
-
-        <div class="side-stack">
-          <div class="panel">
-            <p class="panel-label"><span class="arrow">→</span> Open to</p>
-            <ul class="fact-list">
-              <li><span class="mark">✦</span><span>有趣的小项目，一起做点能上线的</span></li>
-              <li><span class="mark">✦</span><span>软硬件结合的东西，愿意折腾硬件</span></li>
-              <li><span class="mark">✦</span><span>网站互评：你挑我毛病，我挑你毛病</span></li>
-              <li><span class="mark">✦</span><span>技术、设计、数据方面的闲聊</span></li>
+            <ul class="pills">
+              <li>计算机应用技术</li>
+              <li>B 端系统</li>
+              <li>智能硬件</li>
+              <li>数据分析</li>
             </ul>
+
+            <div class="actions">
+              <a class="btn btn-dark" href="projects.html">看我的项目 <span aria-hidden="true">→</span></a>
+              <a class="btn btn-outline" href="posts.html">读读文章 <span aria-hidden="true">✦</span></a>
+            </div>
           </div>
 
-          <div class="status-card">
-            <p class="status-top"><span class="dot"></span>在深圳，随时可以聊</p>
-            <p>通常在晚上回消息更快一些。加好友时注明一下来意就好 🙂</p>
+          <!-- 右侧名片：想换成真人照片的话，把 .mono 换成 <img src="photo.jpg" width="92" height="92" alt="Maylin"> 即可 -->
+          <div class="card-stage">
+            <div class="annot l1">学计算机的 ↗</div>
+            <div class="annot l2">↖ 爱折腾硬件</div>
+            <div class="annot l3">喜欢把流程画成图 ↗</div>
+
+            <span class="sticker a">✓ that's me!</span>
+            <span class="sticker b"><span class="dot"></span>在深圳 · 慢热型</span>
+            <span class="sticker c">开工前先画图 ✦</span>
+
+            <div class="me-card">
+              <div class="mono">M</div>
+              <h2>Meet<br /><em>Maylin</em></h2>
+              <p class="sub">builder · learner · note-taker</p>
+              <p class="note">"make it work, then make it clear"</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </main>
 
   <!-- ===================== 页脚 ===================== -->
-  <div class="wrap">
-    <footer>
+  <footer class="site">
+    <div class="wrap foot-inner">
       <span class="f-brand">Maylin ✦</span>
+      <nav class="foot-nav" aria-label="页脚导航">
+        <a href="index.html">首页</a>
+        <a href="projects.html">项目</a>
+        <a href="posts.html">文章</a>
+        <a href="about.html">关于</a>
+      </nav>
       <span>© 2026 · 慢慢改出来的一个小站</span>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </div>
 
-<script>
-  // 移动端菜单
-  var menuBtn = document.getElementById('menuBtn');
-  var navLinks = document.getElementById('navLinks');
-  if (menuBtn && navLinks) {
-    menuBtn.addEventListener('click', function () {
-      var open = navLinks.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      menuBtn.textContent = open ? '✕' : '☰';
-    });
-    navLinks.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') {
-        navLinks.classList.remove('open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        menuBtn.textContent = '☰';
-      }
-    });
-  }
-
-  // 微信一键复制
-  var copyBtn = document.getElementById('copyWx');
-  var hint = document.getElementById('copyHint');
-  if (copyBtn && hint) {
-    copyBtn.addEventListener('click', function () {
-      var wx = copyBtn.dataset.wx;
-      function ok() { hint.textContent = '✅ 微信号已复制：' + wx; }
-      function fallback() {
-        var ta = document.createElement('textarea');
-        ta.value = wx;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); ok(); }
-        catch (err) { hint.textContent = '微信号：' + wx + '（请手动复制）'; }
-        document.body.removeChild(ta);
-      }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(wx).then(ok).catch(fallback);
-      } else {
-        fallback();
-      }
-    });
-  }
-</script>
+<script src="script.js"></script>
 </body>
 </html>

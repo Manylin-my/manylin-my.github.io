@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>关于我和本站 · Maylin's blog</title>
+  <meta name="description" content="关于 Maylin 和这个博客：我是谁、这个站怎么做的、怎么联系我。" />
+  <meta name="author" content="Maylin" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page">
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Maylin <span class="star">✦</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="projects.html">项目</a></li>
+        <li><a href="posts.html">文章</a></li>
+        <li><a class="active" href="about.html">关于我和本站</a></li>
+        <li><a class="nav-cta" href="#contact">Say Hello</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell">
+      <div class="wrap">
+        <div class="section-title-row">
+          <h1 class="sec-title"><span class="star">✦</span> 关于我和本站</h1>
+          <p class="sec-note">nice to meet you</p>
+        </div>
+        <div class="rule"></div>
+
+        <div class="two-col">
+          <!-- 左：关于我 + 联系方式 -->
+          <div id="contact">
+            <div class="panel">
+              <p class="panel-label"><span class="arrow">↳</span> 关于我</p>
+              <ul class="fact-list">
+                <li><span class="mark">✦</span><span>Maylin，学计算机的学生，在深圳。</span></li>
+                <li><span class="mark">✦</span><span>喜欢把想法做成能用的东西：后台系统、智能硬件、小网站。</span></li>
+                <li><span class="mark">✦</span><span>写文档前会先画流程图；Excel 透视表用得比 PPT 熟。</span></li>
+                <li><span class="mark">✦</span><span>遇到问题先拆步骤，做完回头看数据。</span></li>
+                <li><span class="mark">✦</span><span>正在慢慢学 SEO 和数据分析，边学边往这个站上加东西。</span></li>
+              </ul>
+            </div>
+
+            <div class="panel" style="margin-top: 22px;">
+              <p class="panel-label"><span class="arrow">→</span> 联系我</p>
+              <ul class="row-list">
+                <li>
+                  <a class="row" href="mailto:2423677336@qq.com">
+                    <span class="icon" aria-hidden="true">✉</span>
+                    <span class="text">
+                      <span class="label">Email</span>
+                      <span class="value">2423677336@qq.com</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <button class="row" type="button" id="copyWx" data-wx="mo13728562801">
+                    <span class="icon" aria-hidden="true">✆</span>
+                    <span class="text">
+                      <span class="label">WeChat</span>
+                      <span class="value">mo13728562801</span>
+                    </span>
+                  </button>
+                </li>
+              </ul>
+              <p class="copy-hint" id="copyHint" role="status" aria-live="polite">点微信那一栏可以直接复制微信号。</p>
+              <a class="btn btn-rose" href="mailto:2423677336@qq.com" style="margin-top: 14px;">Say hello <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+
+          <!-- 右：关于本站 -->
+          <div>
+            <div class="panel">
+              <p class="panel-label"><span class="arrow">↳</span> 关于本站</p>
+              <ul class="fact-list">
+                <li><span class="mark">✦</span><span>纯手写 HTML / CSS / JS，没有用任何框架。</span></li>
+                <li><span class="mark">✦</span><span>风格参考了暖米色 + 衬线标题的编辑部排版，一边改一边磨。</span></li>
+                <li><span class="mark">✦</span><span>托管在 GitHub Pages，改完 push 一下就自动更新。</span></li>
+                <li><span class="mark">✦</span><span>建站初衷：给自己一个放东西的地方，顺便练手。</span></li>
+              </ul>
+            </div>
+
+            <div class="status-card">
+              <p class="status-top"><span class="dot"></span>在深圳，随时可以聊</p>
+              <p>通常在晚上回消息更快一些。想聊技术、设计、做过的小项目，或者只是打个招呼，都欢迎 🙂</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap foot-inner">
+      <span class="f-brand">Maylin ✦</span>
+      <nav class="foot-nav" aria-label="页脚导航">
+        <a href="index.html">首页</a>
+        <a href="projects.html">项目</a>
+        <a href="posts.html">文章</a>
+        <a href="about.html">关于</a>
+      </nav>
+      <span>© 2026 · 慢慢改出来的一个小站</span>
+    </div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
