@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>树莓派智能垃圾桶 · Maylin's blog</title>
-  <meta name="description" content="软硬件结合的小项目：用树莓派做识别与自动开盖，反复调参、跑测试把识别率一点点往上推。" />
+  <meta name="description" content="软硬件结合的智能垃圾桶：识别靠近的人、自动开盖、语音提示。负责组装、线路调试、参数迭代与测试复盘。" />
   <meta name="author" content="Maylin" />
   <meta property="og:title" content="树莓派智能垃圾桶 · Maylin's blog" />
-  <meta property="og:description" content="识别、自动开盖、语音提示：一个软硬件结合的小项目。" />
+  <meta property="og:description" content="让一个垃圾桶学会看人：识别、开盖、提示，从零搭到能连续运行。" />
   <meta property="og:type" content="article" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -43,9 +43,9 @@
           <p class="italic-line">让一个垃圾桶学会看人</p>
 
           <ul class="meta-row">
-            <li><span>角色</span>待填（如：硬件调试 + 测试）</li>
-            <li><span>时间</span>待填</li>
-            <li><span>工具</span>待填（如：树莓派 · Python · 传感器）</li>
+            <li><span>角色</span>核心成员（组装 / 调参 / 测试）</li>
+            <li><span>时间</span>2025</li>
+            <li><span>工具</span>树莓派 · 传感器 · 舵机 · Python</li>
           </ul>
         </div>
 
@@ -53,28 +53,31 @@
 
           <section>
             <h2 class="d-title"><span class="n">01</span> 为什么做这个</h2>
-            <p>垃圾桶开盖这件事，看起来是个小问题，但每次都要用手碰一下，在厨房、医院这类地方就不太舒服。这个项目想验证一件事：用很便宜的硬件，能不能做出「人靠近就自动开」的效果。</p>
-            <p class="todo">待补充：这是课程作业还是自己想做？团队几个人、你负责哪块？</p>
+            <p>垃圾桶开盖这件事看起来小，但每次都要用手碰一下，在厨房、医院这类地方就不太舒服。这个项目想验证一件事：用很便宜的硬件，能不能做出「人靠近就自动开」的效果。</p>
+            <p>我在团队里负责「让它真的跑起来」的那部分：组装、接线、调参、测试——把实验室里能演示的东西，推到能连续运行。</p>
           </section>
 
           <section>
             <h2 class="d-title"><span class="n">02</span> 我做了什么</h2>
             <ul class="fact-list">
-              <li><span class="mark">✦</span><span>把整件事拆成三步：识别到来的人 → 触发舵机开盖 → 语音提示状态，一步一步单独跑通再串起来。</span></li>
-              <li><span class="mark">✦</span><span>反复调识别距离与灵敏度的参数，用同一套测试动作跑多轮，记录什么时候会误开、什么时候不开。</span></li>
-              <li><span class="mark">✦</span><span>排查硬件「怪问题」：接触不良、供电不足、传感器抖动，学会了先怀疑接线再怀疑代码。</span></li>
+              <li><span class="mark">✦</span><span>把整件事拆成三段：识别到来的人 → 触发舵机开盖 → 语音提示状态。每段单独跑通再串联，出问题时能立刻知道卡在哪一段。</span></li>
+              <li><span class="mark">✦</span><span>独立完成硬件组装、线路调试与运行环境配置，从零把设备搭起来。</span></li>
+              <li><span class="mark">✦</span><span>针对识别误差反复调整灵敏度与距离阈值，记录「误开盖」和「不识别」两类错误的分布，先判断是参数问题还是接线问题，再动手改。</span></li>
+              <li><span class="mark">✦</span><span>与组员同步开发进度、对接技术难点，沉淀测试记录与迭代清单，让下一轮改的时候不用重新摸索。</span></li>
             </ul>
-            <p class="todo">待补充：具体用了什么传感器/模块，参数调了多少轮，误触发从多少次降到多少次。</p>
           </section>
 
           <section>
             <h2 class="d-title"><span class="n">03</span> 结果</h2>
-            <p class="todo">待补充：最终识别率、反应延迟、连续运行多久没出问题。硬件的数字比软件更有说服力，能测就测。</p>
+            <p>最终设备能连续完成「靠近 → 开盖 → 提示」的整套动作，误触发和不出盖的情况比第一版少了很多。</p>
+            <!-- 有测试记录后补：识别准确率从 X% 到 Y%、反应延迟多少毫秒、连续运行多久没出问题。硬件的数字比软件更有说服力。 -->
+            <p>更重要的是方法上的收获：学会了先怀疑接线再怀疑代码，也知道了「改一个参数、跑同一套动作」才叫测试。</p>
           </section>
 
           <section>
             <h2 class="d-title"><span class="n">04</span> 回头看</h2>
-            <p class="todo">待补充：哪一步最折腾？如果加一个传感器/换一块板子，你会怎么改？</p>
+            <p>硬件和软件最大的差别是「不可复现」——同一个动作，今天好明天坏。所以后来我给每次测试都记下当时的环境和参数，不然改了半天，也不知道是哪一步起的作用。</p>
+            <p>如果能加预算，我会换更好的传感器，而不是继续在参数上磨。这是做完才明白的：有些问题不是调出来的，是换出来的。</p>
           </section>
 
         </div>

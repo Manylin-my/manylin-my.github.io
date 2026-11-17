@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>这个站点本身 · Maylin's blog</title>
+  <meta name="description" content="不套模板手写 HTML/CSS/JS 搭的多页站点：四个栏目共享一套样式，每页独立配置标题与描述，栏目与详情页形成清晰内链，移动端断点适配。" />
+  <meta name="author" content="Maylin" />
+  <meta property="og:title" content="这个站点本身 · Maylin's blog" />
+  <meta property="og:description" content="从一页长滚动改成多页结构：手写前端、站点结构与视觉设计。" />
+  <meta property="og:type" content="article" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page">
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Maylin <span class="star">✦</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="experience.html">工作经历</a></li>
+        <li><a class="active" href="projects.html">项目</a></li>
+        <li><a href="posts.html">文章</a></li>
+        <li><a href="about.html">关于我和本站</a></li>
+        <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell">
+      <div class="wrap">
+        <a class="back-link" href="projects.html">← 回到项目</a>
+
+        <div class="detail-head">
+          <p class="eyebrow"><span class="arrow">↳</span> project 04 / website</p>
+          <h1 class="display">
+            <span>这个</span>
+            <span class="italic">站点本身</span>
+          </h1>
+          <p class="italic-line">从一页长滚动，改成有结构的多页站</p>
+
+          <ul class="meta-row">
+            <li><span>角色</span>设计 · 开发 · 内容</li>
+            <li><span>时间</span>2026.11 –</li>
+            <li><span>工具</span>手写 HTML / CSS / JS · Git</li>
+          </ul>
+        </div>
+
+        <div class="detail-body">
+
+          <section>
+            <h2 class="d-title"><span class="n">01</span> 为什么做这个</h2>
+            <p>想有一个自己的地方放东西：做过的项目、写了一半的想法、一些没什么用但想记下来的事。用现成模板当然更快，但我想从零搭一次，顺便把课上学的网页和结构知识真的用一遍。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title"><span class="n">02</span> 我做了什么</h2>
+            <ul class="fact-list">
+              <li><span class="mark">✦</span><span>不套框架，手写 HTML / CSS / JavaScript；四个栏目共享一套样式表，改一处全站生效，加页面只需要写内容。</span></li>
+              <li><span class="mark">✦</span><span>每个页面单独写 title、description 与 Open Graph 信息，栏目页和详情页之间用清晰的内链串起来——这既是给人看的结构，也是给搜索引擎看的结构。</span></li>
+              <li><span class="mark">✦</span><span>视觉上定了一套暖米色 + 衬线标题的编辑部风格，图标用手绘 SVG 代替图片，整站不加载任何外部图片资源。</span></li>
+              <li><span class="mark">✦</span><span>做了移动端断点适配、键盘焦点样式、aria 标签，以及「减少动效」系统偏好的支持。</span></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="d-title"><span class="n">03</span> 结果</h2>
+            <p>站点从一页长滚动改成了多页结构：现在是四个栏目加四个项目详情页，每个页面有自己的地址，可以被单独分享和收录。用 Git 管版本，每次改动留一条记录，改坏了能退回去。</p>
+            <!-- 接上 GSC / GA4 之后补：收录页数、自然搜索访问量、平均停留。有真实数字再写。 -->
+          </section>
+
+          <section>
+            <h2 class="d-title"><span class="n">04</span> 回头看</h2>
+            <p>最大的收获不是学会写 CSS，是理解了「结构先于样式」。一开始所有内容都堆在一个页面里，导航点了不会跳，改一处要动整页；拆成多页之后，每加一个东西只需要动一个地方。</p>
+            <p>另一个体会是：做得慢一点，反而快。每次只改一处、改完就看一眼实际效果，比一口气改十处再一起排查要省时间。</p>
+          </section>
+
+        </div>
+
+        <div class="detail-foot">
+          <a href="project-box.html">← 上一个：拾光箱</a>
+          <a href="projects.html">全部项目 →</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap foot-inner">
+      <span class="f-brand">Maylin ✦</span>
+      <nav class="foot-nav" aria-label="页脚导航">
+        <a href="index.html">首页</a>
+        <a href="experience.html">工作经历</a>
+        <a href="projects.html">项目</a>
+        <a href="posts.html">文章</a>
+        <a href="about.html">关于</a>
+      </nav>
+      <span>© 2026 · 慢慢改出来的一个小站</span>
+    </div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
