@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <title>项目 · Maylin's blog</title>
-  <meta name="description" content="Maylin 做过的项目：花店后台管理系统、树莓派智能垃圾桶、拾光箱小程序。" />
+  <meta name="description" content="Maylin 做过的项目：花店后台管理系统、树莓派智能垃圾桶、拾光箱交互原型。" />
   <meta name="author" content="Maylin" />
   <meta property="og:title" content="项目 · Maylin's blog" />
   <meta property="og:description" content="三件做过的事，被一条线串在一起。" />
   <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261120" />
 </head>
 <body>
 <div class="page">
@@ -20,8 +22,8 @@
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">首页</a></li>
-        <li><a href="experience.html">工作经历</a></li>
         <li><a class="active" href="projects.html">项目</a></li>
+        <li><a href="experience.html">工作经历</a></li>
         <li><a href="posts.html">文章</a></li>
         <li><a href="about.html">关于我和本站</a></li>
         <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
@@ -132,8 +134,8 @@
               <h2 class="tl-title">树莓派智能垃圾桶</h2>
               <div class="tl-panel" id="tl-2">
                 <div>
-                  <p>软硬件结合的小项目：识别、自动开盖、语音提示。反复调参数、跑测试，一点点把识别率往上推，也学会了怎么排查硬件的怪问题。</p>
-                  <div class="tags"><span>硬件调试</span><span>参数调优</span><span>测试</span></div>
+                  <p>一台普通垃圾桶 + 树莓派：人走到 30cm 内自动开盖、离开后合盖，并用中文语音播报状态。舵机靠胶带固定在桶内、木棍顶盖，靠调 PWM 占空比和迟滞阈值把误触发压下去。</p>
+                  <div class="tags"><span>硬件调试</span><span>超声波测距</span><span>状态机</span></div>
                   <div class="tl-links">
                     <a class="go" href="project-bin.html">看完整详情 <span class="arr">↗</span></a>
                   </div>
@@ -173,12 +175,12 @@
                 <span class="tl-plus" aria-hidden="true">＋</span>
               </button>
 
-              <span class="tl-num">03 / miniapp</span>
-              <h2 class="tl-title">拾光箱 · 小程序</h2>
+              <span class="tl-num">03 / prototype</span>
+              <h2 class="tl-title">拾光箱 · 交互原型</h2>
               <div class="tl-panel" id="tl-3">
                 <div>
-                  <p>把照片和文字按时间线收进「拾光箱」，只给自己看、能按某段日子翻回去的日常记录工具。负责功能规划、页面结构与交互流程设计。</p>
-                  <div class="tags"><span>微信小程序</span><span>功能规划</span><span>交互设计</span></div>
+                  <p>把照片、视频、文字按「那件事」收进一个个箱子，想看时整箱翻开。13 屏交互原型已上线，点进去就能试：注册、建箱子、加素材、翻时间轴、全屏看图。负责产品定位、信息架构与交互设计。</p>
+                  <div class="tags"><span>交互原型</span><span>信息架构</span><span>可在线体验</span></div>
                   <div class="tl-links">
                     <a class="go" href="project-box.html">看完整详情 <span class="arr">↗</span></a>
                   </div>
@@ -244,8 +246,8 @@
       <span class="f-brand">Maylin ✦</span>
       <nav class="foot-nav" aria-label="页脚导航">
         <a href="index.html">首页</a>
-        <a href="experience.html">工作经历</a>
         <a href="projects.html">项目</a>
+        <a href="experience.html">工作经历</a>
         <a href="posts.html">文章</a>
         <a href="about.html">关于</a>
       </nav>
@@ -254,6 +256,6 @@
   </footer>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261120"></script>
 </body>
 </html>

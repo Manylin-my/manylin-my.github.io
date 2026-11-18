@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>这个博客是怎么搭起来的 · Maylin's blog</title>
+  <meta name="description" content="从对 SEO 的好奇和「作品没地方放」这个实际问题出发，到配色、字体、多页结构、项目详情页改了四遍、和 AI 协作写代码——记录这个小站是怎么从零搭起来的。" />
+  <meta name="author" content="Maylin" />
+  <meta property="og:title" content="这个博客是怎么搭起来的 · Maylin's blog" />
+  <meta property="og:description" content="手写 HTML / CSS，不套模板，改了很多遍的一个小站。" />
+  <meta property="og:type" content="article" />
+  <link rel="stylesheet" href="styles.css?v=20261120" />
+</head>
+<body>
+<div class="page">
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Maylin <span class="star">✦</span></a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="projects.html">项目</a></li>
+        <li><a href="experience.html">工作经历</a></li>
+        <li><a class="active" href="posts.html">文章</a></li>
+        <li><a href="about.html">关于我和本站</a></li>
+        <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell">
+      <div class="wrap">
+        <a class="back-link" href="posts.html">← 回到文章</a>
+
+        <div class="detail-head">
+          <p class="eyebrow"><span class="arrow">↳</span> note 01 / site</p>
+          <h1 class="display">
+            <span>这个博客</span>
+            <span class="italic">是怎么搭起来的</span>
+          </h1>
+          <p class="italic-line">想给自己一个能放东西的地方</p>
+
+          <ul class="meta-row">
+            <li><span>时间</span>2026.11.16</li>
+            <li><span>方式</span>手写 HTML / CSS · 与 AI 协作</li>
+            <li><span>状态</span>还在改</li>
+          </ul>
+        </div>
+
+        <div class="detail-body">
+
+          <section>
+            <h2 class="d-title">起因有两个：一个好奇，一个很实际</h2>
+            <p>最近在了解 SEO 这类岗位的时候，发现一件有意思的事：SEO 的一切动作都发生在网站上——TDK 怎么写、内链怎么串、搜索引擎怎么收录、站点地图怎么提交，教程看了一堆，终归是纸上谈兵。既然要学，干脆自己动手建一个站，把这些概念在自己的站上真跑一遍。学了就用，是我能坚持下来的唯一学法。</p>
+            <p>另一个起因更实际：投简历的时候发现，简历只有一页，写不下的东西就没地方去了。花店那套系统我做了 17 屏页面原型，横着翻一遍能看完一条完整的下单路径，可这些在一页 PDF 里挤不出来，最多写一行「输出 17 屏原型」，剩下的全凭对方想象。</p>
+            <p>所以决定自己搭个站。一是给作品找个能点开的地方，二是正好把想学的 SEO 在真实站点上练起来——我学的是计算机应用，但不能只会考试。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title">从一张参考图开始定颜色和字体</h2>
+            <p>没找模板，先翻了一堆站，挑了一张看着舒服的截图，然后把它拆开看：底色不是纯白，是偏暖的米白；正文不是纯黑，接近墨色，读长段落不刺眼；点缀色只用一个偏暗的玫瑰色，用在日期、链接、小标记上，其它地方尽量素。</p>
+            <p>字体是两套搭配：标题用衬线，收着一点文艺气；正文用无衬线，屏幕上读着更利落。行高调到 1.95，段落行宽压在 68 个字左右——太宽眼睛要来回扫，太窄又断得碎。</p>
+            <p>不套模板的理由说出来有点笨：模板里改一个间距，要跟它自带的样式打几轮架，改完还不知道是谁在生效。手写虽然慢，但每一行我都能说清它为什么在那儿，以后想改哪儿直接改。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title">九个页面，共用一套样式</h2>
+            <p>全站只有一个 styles.css 和一个 script.js，首页、项目、工作经历、文章、关于，加上四个项目详情页，都引同一套。好处很直接：改一次配色，全站跟着变；写新页面的时候不用重新搭骨架，复制结构、换内容就行。</p>
+            <p>导航的栏目顺序调过一次。「项目」和「工作经历」前后对调了位置，理由是想让人先看到东西再看经历——改的时候九个页面的顶部导航和页脚都要同步，漏一个就会跳页的时候忽然找不到自己在哪儿。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title">项目详情页改了四遍</h2>
+            <p>最费劲的不是首页，是项目详情页。第一版按「我做了什么」从头写到尾，自己读一遍都觉得像流水账：一堆动作，看完不知道结果是什么。后来整页重排，改成先给成果——17 屏页面、两套视图、八个板块——再往回讲为什么做、目标是什么、中间遇到什么问题、怎么调的。</p>
+            <p>排版也返工过。一开始想着图文穿插，把图卡塞在段落中间，结果文字排到 68 字宽就收住了，右边空出一大片，图却挤在字中间，看着很别扭。试过左右分栏，更糟：结构图是竖长图、原型是横扁图，两栏高度永远对不齐，总有一边留个大洞。最后老老实实回到单列，文字讲完，下面两张一样大的卡片并排，谁也不抢谁的位置。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title">手机上不能崩</h2>
+            <p>桌面端排好只是第一步。断点设了四档，一档一档往下试，最常干的事是把窗口拉到 390 宽，看有没有横向滚动条、有没有哪个卡片撑出边界。踩过的坑基本都是尺寸写死的：图片固定高度、网格最小宽度比容器还大，看着没事，一换小屏就把页面顶开。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title">关于 AI：说实话</h2>
+            <p>这个站的代码，还有花店那 17 屏原型，都不是我一个人手做出来的，是和 AI 协作完成的：我负责提需求、定栏目结构和信息架构、写文案、给每一轮效果验收——不对就打回去重改，前前后后改了十几轮；AI 负责把想法变成代码和页面。每一版改完，我都会先自己点一遍、试一遍，确认没问题才留下。</p>
+            <p>我不觉得这件事需要藏着。2026 年了，用 AI 干活是常态，会把它用出效率是能力不是捷径。但要紧的是另一半：站上每个模块是什么、为什么这么排、那段脚本在干什么，原型里每一屏为什么这么设计，我要能自己讲清楚——这也是我给自己留的功课：把这套代码从头读一遍，读懂为止。手写、不套模板的意义也在这里：没有模板的黑盒，每一行都摊开在明面上。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title">还没做完的部分</h2>
+            <p>现在站点还挂在本地的临时地址上，没有自己的域名。下一步是买一个域名、传到 GitHub Pages、配好 CNAME 和 HTTPS，然后去 Google Search Console 提交站点地图，再看看收录情况。顺序是先定域名再接统计，不然以后换域名，收录和访问数据要全部重来。</p>
+            <p>文章也才刚开始写。这一篇是记录，后面还想写项目复盘和这几个月求职期的事。站会一直改，就像它的页脚写的——慢慢改出来的一个小站。</p>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site">
+    <div class="wrap foot-inner">
+      <span class="f-brand">Maylin ✦</span>
+      <nav class="foot-nav" aria-label="页脚导航">
+        <a href="index.html">首页</a>
+        <a href="projects.html">项目</a>
+        <a href="experience.html">工作经历</a>
+        <a href="posts.html">文章</a>
+        <a href="about.html">关于</a>
+      </nav>
+      <span>© 2026 · 慢慢改出来的一个小站</span>
+    </div>
+  </footer>
+</div>
+
+<script src="script.js?v=20261120"></script>
+</body>
+</html>

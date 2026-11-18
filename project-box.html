@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>拾光箱 · 小程序 · Maylin's blog</title>
-  <meta name="description" content="拾光箱：把照片和文字按时间线收进一个箱子的微信小程序，只给自己看、能按某段日子翻回去的日常记录工具。负责功能规划与交互设计。" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>拾光箱 · 交互原型 · Maylin's blog</title>
+  <meta name="description" content="拾光箱：把照片、视频、文字按事件收进「箱子」的个人时光记忆管理工具。13 屏交互原型可在线试玩，含产品定位、信息架构与视觉方向。" />
   <meta name="author" content="Maylin" />
-  <meta property="og:title" content="拾光箱 · 小程序 · Maylin's blog" />
-  <meta property="og:description" content="把散落的日常，收进一个箱子里。" />
+  <meta property="og:title" content="拾光箱 · 交互原型 · Maylin's blog" />
+  <meta property="og:description" content="用箱子收好每一段时光——13 屏原型可直接点开体验。" />
   <meta property="og:type" content="article" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261120" />
 </head>
 <body>
 <div class="page">
@@ -20,8 +22,8 @@
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">首页</a></li>
-        <li><a href="experience.html">工作经历</a></li>
         <li><a class="active" href="projects.html">项目</a></li>
+        <li><a href="experience.html">工作经历</a></li>
         <li><a href="posts.html">文章</a></li>
         <li><a href="about.html">关于我和本站</a></li>
         <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
@@ -35,46 +37,111 @@
         <a class="back-link" href="projects.html">← 回到项目</a>
 
         <div class="detail-head">
-          <p class="eyebrow"><span class="arrow">↳</span> project 03 / miniapp</p>
+          <p class="eyebrow"><span class="arrow">↳</span> project 03 / prototype</p>
           <h1 class="display">
             <span>拾光箱</span>
-            <span class="italic">小程序</span>
+            <span class="italic">交互原型</span>
           </h1>
-          <p class="italic-line">把散落的日常，收进一个箱子里</p>
+          <p class="italic-line">用箱子收好每一段时光</p>
 
           <ul class="meta-row">
-            <li><span>角色</span>功能规划 · 交互设计</li>
-            <li><span>时间</span>2025</li>
-            <li><span>形态</span>微信小程序</li>
+            <li><span>角色</span>产品定位 · 信息架构 · 交互原型</li>
+            <li><span>时间</span>2025 – 2026</li>
+            <li><span>形态</span>Web 交互原型（可在线试玩）</li>
           </ul>
         </div>
 
         <div class="detail-body">
 
           <section>
-            <h2 class="d-title"><span class="n">01</span> 为什么做这个</h2>
-            <p>照片存在相册里是「按时间堆着」，发在朋友圈又只是「给别人的」。中间缺一个私人的位置：只给自己看的、能按某段日子翻回去的日常记录。</p>
-            <p>所以这个项目的目标不是「记更多」，而是「翻得动」——三个月后回头看，还能一眼看出那阵子自己在干嘛。</p>
+            <h2 class="d-title"><span class="n">01</span> 成果</h2>
+            <p>拾光箱是一个收个人记忆的工具：照片、视频、文字不按月份平铺，而是按「那件事」收进一个个箱子，想看的时候整箱翻开。下面这台手机里跑的是完整原型——注册、建箱子、加素材、翻时间轴、全屏看照片，一条路走得通，不用安装。</p>
+            <ul class="stat-row">
+              <li><b>13 屏</b><span>全部可点击</span></li>
+              <li><b>4 条</b><span>核心流程走通</span></li>
+              <li><b>6 个</b><span>功能模块</span></li>
+              <li><b>4 个</b><span>目标用户场景</span></li>
+            </ul>
+
+            <div class="d-demo">
+              <div class="d-demo-phone">
+                <iframe id="sgFrame"
+                        src="https://manylin-my.github.io/shiguangxiang/#page=welcome"
+                        title="拾光箱可交互原型：可直接点击、填写表单"
+                        loading="lazy"
+                        allow="fullscreen"></iframe>
+              </div>
+              <div class="d-demo-side">
+                <p class="d-demo-hint">左边这台手机是真的能点的，不是录屏——按钮、表单、翻页都能操作。建议从「欢迎页」开始，走一遍注册 → 建箱子 → 加素材。</p>
+                <p class="d-demo-hint">懒得走流程，也可以直接跳到某屏看：</p>
+                <ul class="d-demo-jump">
+                  <li><button type="button" data-screen="welcome">欢迎页</button></li>
+                  <li><button type="button" data-screen="register">注册</button></li>
+                  <li><button type="button" data-screen="home">我的箱子</button></li>
+                  <li><button type="button" data-screen="create">新建箱子</button></li>
+                  <li><button type="button" data-screen="search">搜索</button></li>
+                  <li><button type="button" data-screen="me">我的</button></li>
+                </ul>
+                <a class="btn btn-outline d-demo-open"
+                   href="https://manylin-my.github.io/shiguangxiang/"
+                   target="_blank" rel="noopener">新窗口全屏打开 ↗</a>
+
+                <div class="d-demo-index">
+                  <p class="d-demo-index-title">这 13 屏是怎么分的</p>
+                  <dl>
+                    <div><dt>认证流程</dt><dd>欢迎 · 注册 · 登录 · 忘记密码</dd></div>
+                    <div><dt>核心功能</dt><dd>我的箱子 · 新建箱子 · 添加素材 · 回忆时间轴</dd></div>
+                    <div><dt>内容展示</dt><dd>当天回忆 · 全屏相册</dd></div>
+                    <div><dt>辅助</dt><dd>搜索 · 我的 · 设置</dd></div>
+                  </dl>
+                </div>
+
+                <div class="d-demo-index d-demo-steps">
+                  <p class="d-demo-index-title">想走完整流程，这样填</p>
+                  <ol>
+                    <li>手机号随便填 11 位，比如 <code>13800138000</code></li>
+                    <li>点「获取验证码」，收到后随便填 4 位数字</li>
+                    <li>密码 6 位以上、两次一致，就注册进去了</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section>
-            <h2 class="d-title"><span class="n">02</span> 我做了什么</h2>
-            <ul class="fact-list">
-              <li><span class="mark">✦</span><span>把需求收在三条主线里：记一条（照片 + 文字）、按时间线看、按「集」回看某段日子。砍掉社交、点赞、公开分享——一加，它就变成第二个朋友圈了。</span></li>
-              <li><span class="mark">✦</span><span>先定「打开后第一眼看到什么」，再补二级页面与跳转流程：首页直接是最近的记录，而不是一个空白的引导页。</span></li>
-              <li><span class="mark">✦</span><span>用文字和草图先跟人过一遍流程，能说通再往下画，省掉来回改的成本。</span></li>
+            <h2 class="d-title"><span class="n">02</span> 为什么做 & 目标</h2>
+            <p>照片躺在相册里是按月份平铺的，一条时间线里混着截图、外卖单、随手拍的云，翻三个月前的一次旅行要一路划过去；发在朋友圈又只是给别人的。中间缺一个位置：只给自己看的、能按「那次旅行」「那个夏天」整块翻回去的地方。</p>
+            <p>所以我把「箱子」当容器——不是文件夹，是有盖子的、贴了手写标签的收纳盒。目标也很具体：<b>新建一个箱子 → 一天一天往里放东西 → 半年后还能原样翻出来。</b>整理的过程本身要有仪式感，而不是多一个"上传"按钮。</p>
+          </section>
+
+          <section>
+            <h2 class="d-title"><span class="n">03</span> 我做了什么</h2>
+            <ul class="fact-list fact-list--2col">
+              <li><span class="mark">✦</span><span><b>信息架构：</b>13 屏分成四块——认证流程（欢迎 / 注册 / 登录 / 忘记密码）、核心功能（首页 / 新建箱子 / 添加素材 / 时间轴）、内容展示（当天回忆 / 全屏相册）、辅助（搜索 / 我的 / 设置）。</span></li>
+              <li><span class="mark">✦</span><span><b>主链路：</b>欢迎 → 注册 → 登录 → 我的箱子 → 新建箱子 → 添加素材 → 回忆时间轴 → 当天回忆 → 全屏相册。每一屏都能点到下一屏，不留断路。</span></li>
+              <li><span class="mark">✦</span><span><b>「箱子」这个容器：</b>旅行 / 聚会 / 纪念日 / 日常 / 学习五类，建箱时选分类、起名字、挑封面。收纳这个动作要有手感，不能只是填个标题。</span></li>
+              <li><span class="mark">✦</span><span><b>多媒体时间轴：</b>照片、视频、随记混排在同一条轴上，按天分段，顶部显示共多少张照片、多少段回忆——先让人知道这箱子里装了多少。</span></li>
+              <li><span class="mark">✦</span><span><b>账号体系做全：</b>注册（手机号 + 验证码 + 两次密码）、登录、忘记密码重设三条路都画完了，不是只做主路径。</span></li>
+              <li><span class="mark">✦</span><span><b>视觉方向：</b>拟物牛皮纸质感 + 手写体标签，颜色压到米白与棕色系。它得有纸箱子的手感，才配得上「收好每一段时光」这句话。</span></li>
             </ul>
           </section>
 
           <section>
-            <h2 class="d-title"><span class="n">03</span> 结果</h2>
-            <p>目前走完的是功能框架与页面结构：三条主线定下来了，主要页面的跳转关系也理清楚了，具体实现还在一步步推进。</p>
-            <!-- 更新这里：做到哪一步了（原型 / 已上线 / 有几个真实用户）。没有数据就写当前状态，诚实比数字耐看。 -->
+            <h2 class="d-title"><span class="n">04</span> 给谁用</h2>
+            <p>定位的时候先想清楚它替谁干活，四个场景都是从自己的动作里推出来的：</p>
+            <ul class="fact-list fact-list--2col">
+              <li><span class="mark">✦</span><span><b>旅行回忆收纳：</b>一次旅行一个箱子，按天加照片视频、写当天见闻，回来就是一整篇游记。</span></li>
+              <li><span class="mark">✦</span><span><b>宝宝成长记录：</b>专属箱子按月记，第一次走路、第一次叫妈妈，都是独一份的东西。</span></li>
+              <li><span class="mark">✦</span><span><b>恋爱纪念日：</b>「我们的故事」一个箱子，约会、节日、礼物按时间排下去，是两个人的时光胶囊。</span></li>
+              <li><span class="mark">✦</span><span><b>年度回忆录：</b>一年一个箱子，年底翻开就是这一年的总结，比翻相册更有仪式感。</span></li>
+            </ul>
           </section>
 
           <section>
-            <h2 class="d-title"><span class="n">04</span> 回头看</h2>
-            <p>最想加的功能是「找某一天」——三条主线之外，人真正高频的动作往往是「找那张照片」，而不是「整理」。而最想守住的底线是不加社交入口：一旦能给别人看，记录就变成表演了。</p>
+            <h2 class="d-title"><span class="n">05</span> 回头看</h2>
+            <p>现在最被追问的一句是「箱子和相册到底差在哪」。这说明概念本身要靠界面解释，不能靠文案——下一页我得让它更直白：箱子里装了什么、有多少、怎么翻，第一眼就懂。</p>
+            <p>另一个还没答案的问题：原型里的数据全是我自己造的演示数据。真实的人会怎么起名、会不会真按事件建箱子、一个箱子放到多少条就嫌烦，我不知道。等有十几个人真用过，第一批要改的多半是「建箱」那一步。</p>
+            <p>分享入口在原型里留着，但做的时候有意识没往社交上走：能分享的是一箱只读的回忆，不是一条公开动态。一旦能给别人看，整理就变成表演了。</p>
           </section>
 
         </div>
@@ -93,8 +160,8 @@
       <span class="f-brand">Maylin ✦</span>
       <nav class="foot-nav" aria-label="页脚导航">
         <a href="index.html">首页</a>
-        <a href="experience.html">工作经历</a>
         <a href="projects.html">项目</a>
+        <a href="experience.html">工作经历</a>
         <a href="posts.html">文章</a>
         <a href="about.html">关于</a>
       </nav>
@@ -103,6 +170,22 @@
   </footer>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261120"></script>
+<script>
+  // 原型快捷入口：只改 iframe 的 hash，不重载整页
+  (function () {
+    var frame = document.getElementById('sgFrame');
+    if (!frame) return;
+    var base = frame.getAttribute('src').split('#')[0];
+    document.querySelectorAll('.d-demo-jump button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        frame.src = base + '#page=' + btn.getAttribute('data-screen');
+        document.querySelectorAll('.d-demo-jump button').forEach(function (b) {
+          b.classList.toggle('is-on', b === btn);
+        });
+      });
+    });
+  })();
+</script>
 </body>
 </html>

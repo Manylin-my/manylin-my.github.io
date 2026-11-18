@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <title>文章 · Maylin's blog</title>
   <meta name="description" content="Maylin 的文章列表：项目复盘、学习笔记和一些小思考。" />
   <meta name="author" content="Maylin" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261120" />
 </head>
 <body>
 <div class="page">
@@ -17,8 +19,8 @@
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">首页</a></li>
-        <li><a href="experience.html">工作经历</a></li>
         <li><a href="projects.html">项目</a></li>
+        <li><a href="experience.html">工作经历</a></li>
         <li><a class="active" href="posts.html">文章</a></li>
         <li><a href="about.html">关于我和本站</a></li>
         <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
@@ -37,37 +39,17 @@
 
         <!--
           文章列表使用说明：
-          1. 每篇文章可以做成一个单独的 html 文件（如 posts/blog-build.html），把下面的 href 指过去即可；
-          2. 目前这三条是示例条目（对应我真实做过的事），发布正式文章后替换标题、摘要和链接；
+          1. 每篇文章做成一个单独的 html 文件（如 post-blog.html），把 href 指过去就行；
+          2. 现在只挂了一篇，后面写完再往 <ul> 里加一条 <li>，照抄结构换日期 / 标题 / 摘要；
           3. 日期格式随意，保持"日期在前、标题在后"的排版节奏即可。
         -->
         <ul class="post-list">
           <li class="post-item">
-            <a class="post-link" href="#" title="文章还没写好，先占个位">
+            <a class="post-link" href="post-blog.html">
               <span class="post-date">2026.11.16</span>
               <span class="post-body">
                 <h3>这个博客是怎么搭起来的</h3>
-                <p>从一张参考图开始：配色怎么定、字体怎么选、为什么坚持手写不套模板。一篇记录本站诞生过程的文章。</p>
-                <span class="go">read →</span>
-              </span>
-            </a>
-          </li>
-          <li class="post-item">
-            <a class="post-link" href="#" title="文章还没写好，先占个位">
-              <span class="post-date">2026.11.02</span>
-              <span class="post-body">
-                <h3>花店后台系统：从需求到数据库</h3>
-                <p>给线下花店做一个后台，最难的不是写页面，而是想清楚「库存到底什么时候该扣、什么时候该加」。</p>
-                <span class="go">read →</span>
-              </span>
-            </a>
-          </li>
-          <li class="post-item">
-            <a class="post-link" href="#" title="文章还没写好，先占个位">
-              <span class="post-date">2026.10.18</span>
-              <span class="post-body">
-                <h3>智能垃圾桶调试手记</h3>
-                <p>识别率上不去的那两周，我把每一次失败的原因都记了下来。后来发现，规律早就藏在记录里。</p>
+                <p>从对 SEO 的好奇和「作品没地方放」说起：配色怎么定、字体怎么选、为什么坚持手写不套模板、怎么和 AI 协作，以及项目详情页是怎么返工四遍才理顺的。</p>
                 <span class="go">read →</span>
               </span>
             </a>
@@ -82,8 +64,8 @@
       <span class="f-brand">Maylin ✦</span>
       <nav class="foot-nav" aria-label="页脚导航">
         <a href="index.html">首页</a>
-        <a href="experience.html">工作经历</a>
         <a href="projects.html">项目</a>
+        <a href="experience.html">工作经历</a>
         <a href="posts.html">文章</a>
         <a href="about.html">关于</a>
       </nav>
@@ -92,6 +74,6 @@
   </footer>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261120"></script>
 </body>
 </html>

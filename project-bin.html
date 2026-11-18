@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <title>树莓派智能垃圾桶 · Maylin's blog</title>
-  <meta name="description" content="软硬件结合的智能垃圾桶：识别靠近的人、自动开盖、语音提示。负责组装、线路调试、参数迭代与测试复盘。" />
+  <meta name="description" content="树莓派 + 超声波 + 舵机做的感应垃圾桶：30cm 内自动开盖、离人后合盖、语音播报状态。记录接线、PWM 校准、迟滞防抖与排查顺序。" />
   <meta name="author" content="Maylin" />
   <meta property="og:title" content="树莓派智能垃圾桶 · Maylin's blog" />
-  <meta property="og:description" content="让一个垃圾桶学会看人：识别、开盖、提示，从零搭到能连续运行。" />
+  <meta property="og:description" content="让一个垃圾桶学会看人：30cm 开盖、离人合盖、开口说话。" />
   <meta property="og:type" content="article" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261120" />
 </head>
 <body>
 <div class="page">
@@ -20,8 +22,8 @@
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">首页</a></li>
-        <li><a href="experience.html">工作经历</a></li>
         <li><a class="active" href="projects.html">项目</a></li>
+        <li><a href="experience.html">工作经历</a></li>
         <li><a href="posts.html">文章</a></li>
         <li><a href="about.html">关于我和本站</a></li>
         <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
@@ -43,41 +45,80 @@
           <p class="italic-line">让一个垃圾桶学会看人</p>
 
           <ul class="meta-row">
-            <li><span>角色</span>核心成员（组装 / 调参 / 测试）</li>
+            <li><span>角色</span>硬件组装 / 接线 / 代码 / 测试</li>
             <li><span>时间</span>2025</li>
-            <li><span>工具</span>树莓派 · 传感器 · 舵机 · Python</li>
+            <li><span>工具</span>树莓派 · 超声波模块 · 舵机 · Python</li>
           </ul>
         </div>
 
         <div class="detail-body">
 
           <section>
-            <h2 class="d-title"><span class="n">01</span> 为什么做这个</h2>
-            <p>垃圾桶开盖这件事看起来小，但每次都要用手碰一下，在厨房、医院这类地方就不太舒服。这个项目想验证一件事：用很便宜的硬件，能不能做出「人靠近就自动开」的效果。</p>
-            <p>我在团队里负责「让它真的跑起来」的那部分：组装、接线、调参、测试——把实验室里能演示的东西，推到能连续运行。</p>
+            <h2 class="d-title"><span class="n">01</span> 成果</h2>
+            <p>一台普通塑料垃圾桶，加上树莓派和几块钱的模块：人走到 30 厘米以内，盖子自己开；人走开一两秒，盖子合上；开合的时候它会用中文说一句「垃圾桶已打开 / 已关闭」。测距、判断、转舵机、播语音这四步全部跑通，全程不用碰它一下。</p>
+            <ul class="stat-row">
+              <li><b>30 cm</b><span>触发开盖距离</span></li>
+              <li><b>90°</b><span>舵机开盖角度</span></li>
+              <li><b>4 步</b><span>测距 → 判断 → 动作 → 反馈</span></li>
+              <li><b>1–3 秒</b><span>离人后延时合盖</span></li>
+            </ul>
+            <figure class="d-video">
+              <video controls preload="metadata" playsinline src="video/bin-demo.mp4"></video>
+              <figcaption>实机演示 · 13 秒：靠近开盖 → 语音提示 → 离开合盖（记得开声音）</figcaption>
+            </figure>
+            <div class="fig-grid fig-grid--photo">
+              <button class="fig-thumb" type="button" data-fit="true" data-full="img/bin-01-overall.jpg?v=2" data-caption="整体连接 · 桶身 + 树莓派 + 超声波探头">
+                <img src="img/bin-01-overall.jpg?v=2" alt="智能垃圾桶整体外观：白色桶身上用胶带固定两个超声波探头，杜邦线引到桌上的树莓派" loading="lazy" />
+                <span class="fig-label">整体连接</span>
+              </button>
+              <button class="fig-thumb" type="button" data-fit="true" data-full="img/bin-02-servo.jpg?v=2" data-caption="桶内结构 · 舵机固定在桶壁，木棍顶盖">
+                <img src="img/bin-02-servo.jpg?v=2" alt="打开桶盖后的内部结构：舵机用胶带固定在桶内壁，舵机轴上绑一根木棍把盖子顶起" loading="lazy" />
+                <span class="fig-label">桶内 · 舵机与木棍</span>
+              </button>
+              <button class="fig-thumb" type="button" data-fit="true" data-full="img/bin-03-audio.jpg?v=2" data-caption="语音输出 · USB 声卡接两个小喇叭">
+                <img src="img/bin-03-audio.jpg?v=2" alt="USB 声卡插在树莓派上，另一端接两个黑色小喇叭用于语音播报" loading="lazy" />
+                <span class="fig-label">声卡与喇叭</span>
+              </button>
+            </div>
           </section>
 
           <section>
-            <h2 class="d-title"><span class="n">02</span> 我做了什么</h2>
+            <h2 class="d-title"><span class="n">02</span> 为什么做 & 目标</h2>
+            <p>手动开盖的桶，桶盖是整只桶细菌最多的地方——手刚拎完垃圾袋，又去碰盖子。在医院、学校、商场这类人流量大的场合，这种接触一层层叠下来就是交叉传播。而树莓派、舵机、超声波模块、USB 声卡这些元件都已经很便宜，所以我想验证一件事：<b>低成本能不能做出一个「不用碰」的桶。</b></p>
             <ul class="fact-list">
-              <li><span class="mark">✦</span><span>把整件事拆成三段：识别到来的人 → 触发舵机开盖 → 语音提示状态。每段单独跑通再串联，出问题时能立刻知道卡在哪一段。</span></li>
-              <li><span class="mark">✦</span><span>独立完成硬件组装、线路调试与运行环境配置，从零把设备搭起来。</span></li>
-              <li><span class="mark">✦</span><span>针对识别误差反复调整灵敏度与距离阈值，记录「误开盖」和「不识别」两类错误的分布，先判断是参数问题还是接线问题，再动手改。</span></li>
-              <li><span class="mark">✦</span><span>与组员同步开发进度、对接技术难点，沉淀测试记录与迭代清单，让下一轮改的时候不用重新摸索。</span></li>
+              <li><span class="mark">✦</span><span><b>目标：</b>人靠近自动开、离开自动合，状态用语音说出来——眼睛不用看，手不用碰。</span></li>
+              <li><span class="mark">✦</span><span><b>做法：</b>先按「测距 / 舵机 / 语音」拆成三段各自跑通，再串成一条链路。出问题时能立刻判断卡在哪一段，而不是对着一整坨代码猜。</span></li>
             </ul>
           </section>
 
           <section>
-            <h2 class="d-title"><span class="n">03</span> 结果</h2>
-            <p>最终设备能连续完成「靠近 → 开盖 → 提示」的整套动作，误触发和不出盖的情况比第一版少了很多。</p>
-            <!-- 有测试记录后补：识别准确率从 X% 到 Y%、反应延迟多少毫秒、连续运行多久没出问题。硬件的数字比软件更有说服力。 -->
-            <p>更重要的是方法上的收获：学会了先怀疑接线再怀疑代码，也知道了「改一个参数、跑同一套动作」才叫测试。</p>
+            <h2 class="d-title"><span class="n">03</span> 我做了什么</h2>
+            <ul class="fact-list fact-list--2col">
+              <li><span class="mark">✦</span><span><b>接线：</b>舵机信号走 12 号引脚（PWM 控制），超声波触发接 16、接收接 18；VCC 统一 5V、GND 共地，声卡直接插 USB。接之前对着引脚图核一遍——5V 和信号线接反就是烧板子。</span></li>
+              <li><span class="mark">✦</span><span><b>机械结构：</b>桶盖没人帮它开，只能在桶内壁用胶带把舵机固定住，舵机轴上绑一根木棍，转到 90° 时木棍把盖子撑起来。几乎不花钱，但木棍长度、固定位置得一轮轮试。</span></li>
+              <li><span class="mark">✦</span><span><b>测距：</b>给触发脚一个 10 微秒高电平，量回波高电平持续多久，按声速 34300 cm/s 算往返再除以 2 得距离。</span></li>
+              <li><span class="mark">✦</span><span><b>舵机角度：</b>0° 对应占空比 2.5%、90° 对应 7.5%，线性映射 <code>duty = 2.5 + 角度 / 18</code>；转完固定延时 0.3 秒等它到位，否则程序以为开好了，盖子其实还在动。</span></li>
+              <li><span class="mark">✦</span><span><b>判断逻辑：</b>一个 <code>is_open</code> 变量记住当前是开还是关。距离进 30cm 且关着 → 开；人走了且开着 → 关。用状态机而不是「每帧都发指令」，同一个动作就不会被重复触发。</span></li>
+              <li><span class="mark">✦</span><span><b>语音：</b>espeak 调中文（<code>-v zh</code>），语速 150，开盖播「垃圾桶已打开」，合上播「垃圾桶已关闭」。异常退出时停 PWM、清 GPIO，不让舵机憋着劲。</span></li>
+            </ul>
           </section>
 
           <section>
-            <h2 class="d-title"><span class="n">04</span> 回头看</h2>
-            <p>硬件和软件最大的差别是「不可复现」——同一个动作，今天好明天坏。所以后来我给每次测试都记下当时的环境和参数，不然改了半天，也不知道是哪一步起的作用。</p>
-            <p>如果能加预算，我会换更好的传感器，而不是继续在参数上磨。这是做完才明白的：有些问题不是调出来的，是换出来的。</p>
+            <h2 class="d-title"><span class="n">04</span> 遇到的问题与调整</h2>
+            <ul class="fact-list fact-list--2col">
+              <li><span class="mark">✦</span><span><b>角度总是差一点：</b>公式算出 90°，实际盖子只顶起一半。后来不按公式，按盖子实际顶到的位置反推占空比微调——<b>看桶盖，不看数字。</b></span></li>
+              <li><span class="mark">✦</span><span><b>站着不动就来回开合：</b>人停在阈值附近，读数在 30cm 上下跳。改成开、关用两个不同阈值（迟滞），中间留一段缓冲。</span></li>
+              <li><span class="mark">✦</span><span><b>转盖瞬间测距乱跳：</b>舵机电流大，电磁干扰串进超声波。先在动作前后加软件延时避开，再谈硬件滤波。</span></li>
+              <li><span class="mark">✦</span><span><b>顶不动、打滑：</b>木棍力臂太长，舵机扭不过去。缩短木棍、换固定点，把力臂压下来才稳。</span></li>
+              <li><span class="mark">✦</span><span><b>排查顺序：</b>先看线和引脚，再看 PWM 波形，最后才怀疑代码；同时把每一帧距离打印出来，异常值出现在哪个动作之后，就是谁干扰了谁。</span></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="d-title"><span class="n">05</span> 结果 & 回头看</h2>
+            <p>最后这台桶能连续跑完「靠近 → 开盖 → 语音 → 离开 → 合盖」整条链路，误开和不响应的情况比第一版少了很大一截。更重要的是这套「测距 → 判断 → 动作 → 反馈」的骨架立住了，后面再碰任何带传感器的硬件，都是同一套思路。</p>
+            <p>回头看，硬件跟软件最大的差别是<b>不可复现</b>：同一个动作，今天好明天坏。所以后来每次测试都记下当时的环境和参数，不然改了半天，也不知道到底哪一步起了作用。</p>
+            <p>如果重做，我会换测距更稳的传感器、给舵机单独供电，而不是继续在参数上磨。这是做完才明白的：<b>有些问题不是调出来的，是换出来的。</b></p>
           </section>
 
         </div>
@@ -96,8 +137,8 @@
       <span class="f-brand">Maylin ✦</span>
       <nav class="foot-nav" aria-label="页脚导航">
         <a href="index.html">首页</a>
-        <a href="experience.html">工作经历</a>
         <a href="projects.html">项目</a>
+        <a href="experience.html">工作经历</a>
         <a href="posts.html">文章</a>
         <a href="about.html">关于</a>
       </nav>
@@ -106,6 +147,6 @@
   </footer>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261120"></script>
 </body>
 </html>

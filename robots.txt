@@ -1,0 +1,8 @@
+# Maylin's blog · robots.txt
+# 允许所有搜索引擎抓取全站，并指路 sitemap
+# 注意：换了自己的域名之后，把下面两处 manylin-my.github.io 改成新域名
+
+User-agent: *
+Allow: /
+
+Sitemap: https://manylin-my.github.io/sitemap.xml

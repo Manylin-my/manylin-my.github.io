@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Maylin's blog favicon：暖米色底 + 玫瑰灰四角星，和站内 brand 的 ✦ 呼应 -->
+  <rect width="64" height="64" rx="14" fill="#faf6f0"/>
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="rgba(30,26,23,0.18)" stroke-width="2"/>
+  <path d="M32 11 L37.5 26.5 L53 32 L37.5 37.5 L32 53 L26.5 37.5 L11 32 L26.5 26.5 Z" fill="#a2686c"/>
+</svg>

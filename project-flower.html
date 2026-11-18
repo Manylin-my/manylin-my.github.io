@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <title>花店后台管理系统 · Maylin's blog</title>
-  <meta name="description" content="给线下花店做的轻量后台系统：商品管理、库存监控、缺货提醒与订单处理，用 SQL 建数据模型实现库存自动联动。" />
+  <meta name="description" content="从一次买花的体验出发自主立项的个人项目：在校搭出老板端基础框架，毕业后持续完善为老板端与店员端两套视图、订单状态规则、库存流水与成本核算，附系统结构图与 17 屏页面原型。" />
   <meta name="author" content="Maylin" />
   <meta property="og:title" content="花店后台管理系统 · Maylin's blog" />
-  <meta property="og:description" content="把手工记账搬进系统里：一个线下花店的轻量后台。" />
+  <meta property="og:description" content="一个爱买花的人替店长操的心：线下花店的轻量经营系统。" />
   <meta property="og:type" content="article" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261120" />
 </head>
 <body>
 <div class="page">
@@ -20,8 +22,8 @@
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">首页</a></li>
-        <li><a href="experience.html">工作经历</a></li>
         <li><a class="active" href="projects.html">项目</a></li>
+        <li><a href="experience.html">工作经历</a></li>
         <li><a href="posts.html">文章</a></li>
         <li><a href="about.html">关于我和本站</a></li>
         <li><a class="nav-cta" href="about.html#contact">Say Hello</a></li>
@@ -40,44 +42,70 @@
             <span>花店</span>
             <span class="italic">后台管理系统</span>
           </h1>
-          <p class="italic-line">把手工记账搬进系统里</p>
+          <p class="italic-line">从一次买花的体验开始</p>
 
           <ul class="meta-row">
-            <li><span>角色</span>独立完成（需求 / 数据 / 测试）</li>
-            <li><span>时间</span>2025</li>
-            <li><span>工具</span>SQL · 原型草图 · Excel</li>
+            <li><span>角色</span>独立完成（需求 / 规则 / 测试）</li>
+            <li><span>时间</span>2025 – 2026</li>
+            <li><span>工具</span>Xmind</li>
           </ul>
         </div>
 
         <div class="detail-body">
 
           <section>
-            <h2 class="d-title"><span class="n">01</span> 为什么做这个</h2>
-            <p>线下花店的日常是这样的：卖出一束花，老板在纸本子上划一笔；进了新货，再划一笔；等发现某个品种快没了，往往已经断货两天。库存不准、缺货发现太晚、账目对不上，是这类小店最常见的三个坑。</p>
-            <p>我想做的不是一套功能齐全的 ERP，而是一个足够轻的后台：商品、库存、订单三件事自己连起来，老板不用再记第二份账。</p>
+            <h2 class="d-title"><span class="n">01</span> 成果</h2>
+            <p>一套小花店能直接上手的后台方案：17 屏页面一屏不落，从登录、选角色到下单、查库存，主路径一屏接一屏看得完。点下面的卡片就能翻——左右翻页，再点一下可以看原尺寸。</p>
+            <ul class="stat-row">
+              <li><b>17 屏</b><span>页面原型</span></li>
+              <li><b>2 套视图</b><span>老板端 / 店员端</span></li>
+              <li><b>8 个板块</b><span>功能全覆盖</span></li>
+              <li><b>4 步</b><span>订单状态流转</span></li>
+            </ul>
+            <div class="fig-grid">
+              <button class="fig-thumb" type="button" data-full="img/flower-mindmap.jpg" data-caption="系统结构图 · 老板端 / 店员端全貌">
+                <img src="img/flower-mindmap.jpg" alt="花店后台管理系统结构图：登录注册入口，老板端八大板块（首页、礼盒、库存、订单、客户、花材耗材、数据概览、员工管理）与店员端受限视图" loading="lazy" />
+                <span class="fig-label">系统结构图</span>
+              </button>
+              <button class="fig-thumb fig-thumb--proto" type="button" data-slices="img/proto/flower-proto-" data-slice-count="17" data-caption="页面原型" data-captions="第 1 屏 登录·角色选择|第 2 屏 老板登录|第 3 屏 员工登录（下拉选员工）|第 4 屏 老板端·首页|第 5 屏 商品管理|第 6 屏 商品详情 BOM|第 7 屏 库存管理|第 8 屏 订单管理|第 9 屏 客户管理|第 10 屏 花材损耗|第 11 屏 数据看板|第 12 屏 员工管理|第 13 屏 员工端·首页|第 14 屏 新建订单弹窗|第 15 屏 今日订单|第 16 屏 预订单处理|第 17 屏 损耗登记 / 客户查询">
+                <img src="img/proto/flower-proto-01.jpg" alt="花店后台页面原型：登录 - 角色选择页" loading="lazy" />
+                <span class="fig-label">页面原型 · 17 屏</span>
+              </button>
+            </div>
           </section>
 
           <section>
-            <h2 class="d-title"><span class="n">02</span> 我做了什么</h2>
+            <h2 class="d-title"><span class="n">02</span> 为什么做 & 目标</h2>
+            <p>我爱买花。有一次在店里等包花，看见老板一边招呼客人、一边在纸本和手机备忘录之间来回登记，就想：如果我是店长，每天这么记会不会烦。这个念头后来成了我的选题——在校期间我先搭出老板端的基础框架，毕业后进入求职阶段，又把这段时间当成自我充实的练习期继续打磨，才有了现在这套双视图版本。</p>
             <ul class="fact-list">
-              <li><span class="mark">✦</span><span>按经营场景拆出四个核心模块：商品管理、库存监控、缺货提醒、订单处理。先用纸笔把一天的流程走一遍，再决定哪些动作值得做成按钮。</span></li>
-              <li><span class="mark">✦</span><span>定义页面跳转路径、字段规则与数据联动逻辑，画出主要页面流程，标出老板最常用的三个入口，保证打开就能用。</span></li>
-              <li><span class="mark">✦</span><span>用 SQL 建商品、库存、订单三张表，实现「下单自动扣减库存、补货自动增量」，让数据在表之间自己流转，而不是靠人手记。</span></li>
-              <li><span class="mark">✦</span><span>完成增删改查与缺货预警功能，补测超卖、并发补货这类异常场景，定下出错时系统该怎么提示、人该怎么处理。</span></li>
+              <li><span class="mark">✦</span><span><b>调研：</b>市面进销存、收银软件一搜一大把，但花材放三天就蔫、一束花由哪几种花材按量配出来、预订单要提前排——这些花店特有的场景，没有系统管。</span></li>
+              <li><span class="mark">✦</span><span><b>目标：</b>给上不起 ERP 的小花店做一套轻量经营后台——订单、库存损耗、客户都管起来，老板和店员各用各的视图。</span></li>
             </ul>
           </section>
 
           <section>
-            <h2 class="d-title"><span class="n">03</span> 结果</h2>
-            <p>原来的手工台账被替掉，库存与订单数据不再需要人工同步，补货也从「发现没了」提前到「快没了」。</p>
-            <!-- 有真实数据后补到这里：模块与功能点数量、盘点耗时从 X 到 Y、库存差错率下降多少。宁可写「约」，别硬编。 -->
-            <p>比功能本身更有用的，是第一次把「需求 → 数据 → 页面 → 测试」这条链完整走了一遍，知道一个功能从想法到能用，中间会卡在哪些地方。</p>
+            <h2 class="d-title"><span class="n">03</span> 我做了什么</h2>
+            <ul class="fact-list fact-list--2col">
+              <li><span class="mark">✦</span><span><b>方法与工具：</b>Xmind 画结构图定边界 → 按结构逐屏写清字段与按钮，产出 17 屏页面原型并逐屏校对到能用 → 按异常路径自测（超卖、重复提交、越权访问）。</span></li>
+              <li><span class="mark">✦</span><span><b>页面结构：</b>老板端 8 个板块（首页、礼盒、库存、订单、客户、花材耗材、数据概览、员工管理）+ 店员端受限视图；登录第一屏就是角色选择，系统从这里分两条路。</span></li>
+              <li><span class="mark">✦</span><span><b>规则设计：</b>订单只留「待处理 → 已确认 → 已配送 / 已退款」四步；未支付未配送可删、已配送只能走退款；超时自动提醒，处理不处理由人确认。</span></li>
+              <li><span class="mark">✦</span><span><b>库存与成本：</b>入库、售出、销毁各记一笔流水，花材耗材的成本摊进去，「今天到底赚没赚」才算得出来。</span></li>
+              <li><span class="mark">✦</span><span><b>用户思维：</b>店员端看不到成本、搜不到客户名单。这不是拍脑袋——先推演「要是招了店员呢」，再去店里看店员实际怎么接单记账，验证了才拆两套视图。客户资料留在店主手里，不跟着离职的人走。</span></li>
+            </ul>
           </section>
 
           <section>
-            <h2 class="d-title"><span class="n">04</span> 回头看</h2>
-            <p>如果重做，我会先花半天蹲在真实场景里看人怎么用，而不是先定字段。学生项目最容易犯的错不是功能少，是顺序不对——用的人是按自己的习惯走的，不是按我画的流程图走的。</p>
-            <p>还有一个想法：缺货提醒不该只做成一个列表页，它应该出现在老板每天一定会看到的地方，否则再准的预警也没人看。</p>
+            <h2 class="d-title"><span class="n">04</span> 问题与调整</h2>
+            <ul class="fact-list fact-list--2col">
+              <li><span class="mark">✦</span><span>订单一开始只考虑线下当场成交，画到一半闭不了环：预订单怎么办？线上单怎么进？→ 从「卖出一束花」这条主线延伸出预订单、线上单支线，各有状态流转，汇进同一个订单池。</span></li>
+              <li><span class="mark">✦</span><span>自助注册我最初觉得该有 → 想明白注册入口开着，等于陌生人也能进店的系统，砍掉；员工号一律由老板建，离职停用、不删记录。</span></li>
+              <li><span class="mark">✦</span><span>店员角色是推演出来的 → 没急着定稿，去店里观察验证后才动手拆视图。</span></li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 class="d-title"><span class="n">05</span> 回头看</h2>
+            <p>这个项目花时间最多的地方是「想」而不是「画」：每个决定都在老板和店员两个位置之间来回切换后才落笔。但验证次数有限——去店里的几次都挑了不忙的时段，爆单、几板花同时到货的场景我没见过。真见了，我猜会推翻至少两三个决定，那正好是下一步要改的。</p>
           </section>
 
         </div>
@@ -96,8 +124,8 @@
       <span class="f-brand">Maylin ✦</span>
       <nav class="foot-nav" aria-label="页脚导航">
         <a href="index.html">首页</a>
-        <a href="experience.html">工作经历</a>
         <a href="projects.html">项目</a>
+        <a href="experience.html">工作经历</a>
         <a href="posts.html">文章</a>
         <a href="about.html">关于</a>
       </nav>
@@ -106,6 +134,6 @@
   </footer>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261120"></script>
 </body>
 </html>

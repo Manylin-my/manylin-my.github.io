@@ -122,29 +122,175 @@ if (menuBtn && navLinks) {
   }
 })();
 
-// 微信一键复制
-var copyBtn = document.getElementById('copyWx');
-var hint = document.getElementById('copyHint');
-if (copyBtn && hint) {
-  copyBtn.addEventListener('click', function () {
-    var wx = copyBtn.dataset.wx;
-    function ok() { hint.textContent = '✅ 微信号已复制：' + wx; }
-    function fallback() {
-      var ta = document.createElement('textarea');
-      ta.value = wx;
-      ta.setAttribute('readonly', '');
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); ok(); }
-      catch (err) { hint.textContent = '微信号：' + wx + '（请手动复制）'; }
-      document.body.removeChild(ta);
-    }
+// 一键复制：邮箱 / 微信（凡是带 data-copy 的行都走这里）
+// data-copy="要复制的文本"，data-copy-label="提示里的名字"
+(function () {
+  var hint = document.getElementById('copyHint');
+  var rows = Array.prototype.slice.call(document.querySelectorAll('[data-copy]'));
+  if (!hint || !rows.length) return;
+
+  // 老路子：临时 textarea + execCommand，file:// 或旧浏览器靠它
+  function legacyCopy(text) {
+    return new Promise(function (resolve, reject) {
+      try {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '-1000px';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        var okFlag = document.execCommand('copy');
+        document.body.removeChild(ta);
+        if (okFlag) { resolve(); } else { reject(new Error('execCommand failed')); }
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  // 优先用异步剪贴板 API（需要 https 或 localhost），失败再退回老路子
+  function copyText(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(wx).then(ok).catch(fallback);
-    } else {
-      fallback();
+      return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
     }
+    return legacyCopy(text);
+  }
+
+  rows.forEach(function (row) {
+    row.addEventListener('click', function () {
+      var text = row.dataset.copy;
+      if (!text) return;
+      var label = row.dataset.copyLabel || '内容';
+      copyText(text).then(function () {
+        hint.textContent = '✅ ' + label + '已复制：' + text;
+        row.classList.add('is-copied');
+        setTimeout(function () { row.classList.remove('is-copied'); }, 1400);
+      }).catch(function () {
+        hint.textContent = label + '：' + text + '（浏览器不让自动复制，选中手动复制一下）';
+      });
+    });
   });
-}
+})();
+
+// 设计材料灯箱：点缩略卡放大
+// - 单片卡片：data-full="xxx.jpg"，打开就是一张，可在灯箱里滚动看长图
+// - 多片卡片：data-slices="img/proto/flower-proto-" + data-slice-count="19"
+//   → 灯箱里左右翻页（按钮 / 键盘 ← → / 手机上左右滑）
+(function () {
+  var thumbs = Array.prototype.slice.call(document.querySelectorAll('.fig-thumb'));
+  if (!thumbs.length) return;
+
+  // 一张卡片对应一组图
+  function galleryOf(el) {
+    var prefix = el.getAttribute('data-slices');
+    if (prefix) {
+      var n = parseInt(el.getAttribute('data-slice-count'), 10) || 0;
+      var ext = el.getAttribute('data-ext') || '.jpg';
+      var list = [];
+      for (var i = 1; i <= n; i++) list.push(prefix + (i < 10 ? '0' + i : String(i)) + ext);
+      return list;
+    }
+    var full = el.getAttribute('data-full');
+    return full ? [full] : [];
+  }
+
+  var lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.innerHTML =
+    '<button class="lb-nav lb-prev" type="button" aria-label="上一张">←</button>' +
+    '<div class="lb-stage">' +
+      '<div class="lb-view"><img alt="" /></div>' +
+      '<div class="lb-bar">' +
+        '<span class="lb-cap"></span>' +
+        '<span class="lb-count"></span>' +
+        '<button class="lb-close" type="button">关闭 ✕</button>' +
+      '</div>' +
+    '</div>' +
+    '<button class="lb-nav lb-next" type="button" aria-label="下一张">→</button>';
+  document.body.appendChild(lb);
+
+  var view = lb.querySelector('.lb-view');
+  var img = lb.querySelector('.lb-view img');
+  var cap = lb.querySelector('.lb-cap');
+  var count = lb.querySelector('.lb-count');
+  var prev = lb.querySelector('.lb-prev');
+  var next = lb.querySelector('.lb-next');
+
+  var cur = [];       // 当前这组图
+  var names = [];     // 每片的名称（可选）
+  var idx = 0;        // 当前第几张
+  var base = '';      // 卡片上的标题
+  var altBase = '';   // 图片替代文本
+  var fitSingle = false; // 单图也要整屏适配（照片类，别放大到糊）
+
+  function show(i) {
+    if (!cur.length) return;
+    idx = (i + cur.length) % cur.length;
+    img.src = cur[idx];
+    img.alt = names[idx] ? (base + ' · ' + names[idx])
+              : (cur.length > 1 ? altBase + ' 第 ' + (idx + 1) + ' 屏' : altBase);
+    var label = names[idx] || (cur.length > 1 ? '第 ' + (idx + 1) + ' 屏' : '');
+    cap.textContent = base + (label ? '　·　' + label : '');
+    count.textContent = cur.length > 1 ? (idx + 1) + ' / ' + cur.length : '';
+    view.classList.remove('zoom');
+    view.scrollTop = 0;
+    var multi = cur.length > 1;
+    prev.classList.toggle('show', multi);
+    next.classList.toggle('show', multi);
+    view.classList.toggle('fit', multi || fitSingle);
+  }
+
+  function open(i) {
+    var t = thumbs[i];
+    var g = galleryOf(t);
+    if (!g.length) return;
+    cur = g;
+    fitSingle = t.getAttribute('data-fit') === 'true';
+    base = t.getAttribute('data-caption') || '';
+    var cs = t.getAttribute('data-captions');
+    names = cs ? cs.split('|') : [];
+    var ti = t.querySelector('img');
+    altBase = ti ? ti.alt : base;
+    show(0);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+
+  thumbs.forEach(function (t, i) {
+    if (!galleryOf(t).length) return;
+    t.addEventListener('click', function () { open(i); });
+  });
+  lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  // 点图：在「整屏适配」与「原尺寸可拖动」之间切换
+  img.addEventListener('click', function () {
+    if (!cur.length) return;
+    view.classList.toggle('zoom');
+    view.scrollTop = 0;
+    view.scrollLeft = 0;
+  });
+  lb.querySelector('.lb-close').addEventListener('click', close);
+  prev.addEventListener('click', function () { show(idx - 1); });
+  next.addEventListener('click', function () { show(idx + 1); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+
+  // 手机上左右滑
+  var tx = 0, ty = 0;
+  lb.addEventListener('touchstart', function (e) {
+    tx = e.changedTouches[0].clientX;
+    ty = e.changedTouches[0].clientY;
+  }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (cur.length < 2) return;
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) show(idx + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+})();

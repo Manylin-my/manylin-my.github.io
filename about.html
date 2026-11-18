@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <title>关于我和本站 · Maylin's blog</title>
   <meta name="description" content="关于 Maylin 和这个博客：我是谁、这个站怎么做的、怎么联系我。" />
   <meta name="author" content="Maylin" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20261120" />
 </head>
 <body>
 <div class="page">
@@ -17,8 +19,8 @@
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="打开菜单">☰</button>
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">首页</a></li>
-        <li><a href="experience.html">工作经历</a></li>
         <li><a href="projects.html">项目</a></li>
+        <li><a href="experience.html">工作经历</a></li>
         <li><a href="posts.html">文章</a></li>
         <li><a class="active" href="about.html">关于我和本站</a></li>
         <li><a class="nav-cta" href="#contact">Say Hello</a></li>
@@ -41,7 +43,7 @@
             <div class="panel">
               <p class="panel-label"><span class="arrow">↳</span> 关于我</p>
               <ul class="fact-list">
-                <li><span class="mark">✦</span><span>Maylin，学计算机的学生，在深圳。</span></li>
+                <li><span class="mark">✦</span><span>Maylin，在人工智能学院学计算机的学生，在深圳。</span></li>
                 <li><span class="mark">✦</span><span>喜欢把想法做成能用的东西：后台系统、智能硬件、小网站。</span></li>
                 <li><span class="mark">✦</span><span>写文档前会先画流程图；Excel 透视表用得比 PPT 熟。</span></li>
                 <li><span class="mark">✦</span><span>遇到问题先拆步骤，做完回头看数据。</span></li>
@@ -53,16 +55,17 @@
               <p class="panel-label"><span class="arrow">→</span> 联系我</p>
               <ul class="row-list">
                 <li>
-                  <a class="row" href="mailto:2423677336@qq.com">
+                  <!-- 点一下复制邮箱：招聘方多在网页版邮箱里发信，复制比唤起客户端更稳 -->
+                  <button class="row" type="button" data-copy="2423677336@qq.com" data-copy-label="邮箱">
                     <span class="icon" aria-hidden="true">✉</span>
                     <span class="text">
                       <span class="label">Email</span>
                       <span class="value">2423677336@qq.com</span>
                     </span>
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <button class="row" type="button" id="copyWx" data-wx="mo13728562801">
+                  <button class="row" type="button" data-copy="mo13728562801" data-copy-label="微信号">
                     <span class="icon" aria-hidden="true">✆</span>
                     <span class="text">
                       <span class="label">WeChat</span>
@@ -71,8 +74,7 @@
                   </button>
                 </li>
               </ul>
-              <p class="copy-hint" id="copyHint" role="status" aria-live="polite">点微信那一栏可以直接复制微信号。</p>
-              <a class="btn btn-rose" href="mailto:2423677336@qq.com" style="margin-top: 14px;">Say hello <span aria-hidden="true">→</span></a>
+              <p class="copy-hint" id="copyHint" role="status" aria-live="polite">点邮箱或微信那一栏，直接复制。</p>
             </div>
           </div>
 
@@ -103,8 +105,8 @@
       <span class="f-brand">Maylin ✦</span>
       <nav class="foot-nav" aria-label="页脚导航">
         <a href="index.html">首页</a>
-        <a href="experience.html">工作经历</a>
         <a href="projects.html">项目</a>
+        <a href="experience.html">工作经历</a>
         <a href="posts.html">文章</a>
         <a href="about.html">关于</a>
       </nav>
@@ -113,6 +115,6 @@
   </footer>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20261120"></script>
 </body>
 </html>
